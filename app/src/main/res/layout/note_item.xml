@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:elevation="12dp"
+    android:backgroundTint="?attr/cardbackground2"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    app:cardCornerRadius="4dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/tvCurrentTimeMillis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="TextView"
+            android:textColor="?attr/textcolor2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvEintragDatumMillis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="16dp"
+            android:text="TextView"
+            android:textColor="?attr/textcolor2"
+            app:layout_constraintBottom_toBottomOf="@+id/tvCurrentTimeMillis"
+            app:layout_constraintEnd_toStartOf="@+id/tvPriority"
+            app:layout_constraintHorizontal_bias="0.306"
+            app:layout_constraintStart_toEndOf="@+id/tvCurrentTimeMillis"
+            app:layout_constraintTop_toTopOf="@+id/tvCurrentTimeMillis"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvDatum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="?attr/textcolor1"
+            android:textSize="22sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintStart_toStartOf="@+id/tvCurrentTimeMillis"
+            app:layout_constraintTop_toBottomOf="@+id/tvCurrentTimeMillis" />
+
+        <TextView
+            android:id="@+id/tvUhrzeit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="?attr/textcolor1"
+            android:textSize="22sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintBottom_toBottomOf="@+id/tvDatum"
+            app:layout_constraintStart_toStartOf="@+id/tvEintragDatumMillis"
+            app:layout_constraintTop_toTopOf="@+id/tvDatum"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvPriority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="?attr/textcolor1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="?attr/textcolor1"
+            app:layout_constraintStart_toStartOf="@+id/tvCurrentTimeMillis"
+            app:layout_constraintTop_toBottomOf="@+id/tvBasalHeader" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="316dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Description"
+            android:textColor="?attr/textcolor1"
+            app:layout_constraintStart_toStartOf="@+id/tvCurrentTimeMillis"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+        <TextView
+            android:id="@+id/tvBlutzucker"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="32dp"
+            android:text="TextView"
+            android:textColor="?attr/textcolor1"
+            android:textSize="30sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvBlutzuckerHeader"
+            app:layout_constraintStart_toEndOf="@+id/tvBlutzuckerHeader" />
+
+        <TextView
+            android:id="@+id/tvBe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="TextView"
+            android:textColor="?attr/textcolor1"
+            android:textSize="16sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvBeHeader"
+            app:layout_constraintStart_toEndOf="@+id/tvBeHeader" />
+
+        <TextView
+            android:id="@+id/tvBolus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="TextView"
+            android:textColor="?attr/textcolor1"
+            android:textSize="16sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvBolusHeader"
+            app:layout_constraintStart_toEndOf="@+id/tvBolusHeader" />
+
+        <TextView
+            android:id="@+id/tvKorrektur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="TextView"
+            android:textColor="?attr/textcolor1"
+            android:textSize="16sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvKorrekturHeader"
+            app:layout_constraintStart_toEndOf="@+id/tvKorrekturHeader" />
+
+        <TextView
+            android:id="@+id/tvBasal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="TextView"
+            android:textColor="?attr/textcolor1"
+            android:textSize="16sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvBasalHeader"
+            app:layout_constraintStart_toEndOf="@+id/tvBasalHeader" />
+
+        <TextView
+            android:id="@+id/tvBeHeader"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Broteinheiten"
+            android:textColor="?attr/textcolor2"
+            app:layout_constraintStart_toStartOf="@+id/tvCurrentTimeMillis"
+            app:layout_constraintTop_toBottomOf="@+id/tvBlutzuckerHeader" />
+
+        <TextView
+            android:id="@+id/tvBolusHeader"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Bolus"
+            android:textColor="?attr/textcolor2"
+            app:layout_constraintStart_toStartOf="@+id/tvCurrentTimeMillis"
+            app:layout_constraintTop_toBottomOf="@+id/tvBeHeader" />
+
+        <TextView
+            android:id="@+id/tvKorrekturHeader"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Korrektur"
+            android:textColor="?attr/textcolor2"
+            app:layout_constraintStart_toStartOf="@+id/tvCurrentTimeMillis"
+            app:layout_constraintTop_toBottomOf="@+id/tvBolusHeader" />
+
+        <TextView
+            android:id="@+id/tvBasalHeader"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Basal"
+            android:textColor="?attr/textcolor2"
+            app:layout_constraintStart_toStartOf="@+id/tvCurrentTimeMillis"
+            app:layout_constraintTop_toBottomOf="@+id/tvKorrekturHeader" />
+
+        <TextView
+            android:id="@+id/tvBlutzuckerHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Blutzucker"
+            android:textColor="?attr/textcolor2"
+            app:layout_constraintStart_toStartOf="@+id/tvCurrentTimeMillis"
+            app:layout_constraintTop_toBottomOf="@+id/tvDatum" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="Uhr"
+            android:textColor="?attr/textcolor1"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvUhrzeit"
+            app:layout_constraintStart_toEndOf="@+id/tvUhrzeit" />
+
+        <ImageView
+            android:id="@+id/ivEmoji"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvUhrzeit"
+            app:srcCompat="@drawable/emoji_happy" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>

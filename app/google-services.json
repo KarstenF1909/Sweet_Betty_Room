@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "459219944502",
+    "firebase_url": "https://roomarchitecture-b8dfe.firebaseio.com",
+    "project_id": "roomarchitecture-b8dfe",
+    "storage_bucket": "roomarchitecture-b8dfe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459219944502:android:68649348ae72228a",
+        "android_client_info": {
+          "package_name": "com.karstenfischer.room.roomarchitecture"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459219944502-cuim9djufd1eovskcm3lg4sse5lu6duf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.karstenfischer.room.roomarchitecture",
+            "certificate_hash": "041b3a15edefbe5b02932c4d72b76de9e96f53aa"
+          }
+        },
+        {
+          "client_id": "459219944502-0joklbou5e6mmjgu4c0n6hldf30hmd33.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB85aBbQSZtwvAF0mIHe09kfiAIdjqOJg8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "459219944502-0joklbou5e6mmjgu4c0n6hldf30hmd33.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459219944502:android:78192120bfb9c57c",
+        "android_client_info": {
+          "package_name": "com.karstenfischer.room.roomdatabasegithubtest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459219944502-k569jlsdkedq9d1scpmobam03bkf802d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.karstenfischer.room.roomdatabasegithubtest",
+            "certificate_hash": "041b3a15edefbe5b02932c4d72b76de9e96f53aa"
+          }
+        },
+        {
+          "client_id": "459219944502-0joklbou5e6mmjgu4c0n6hldf30hmd33.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB85aBbQSZtwvAF0mIHe09kfiAIdjqOJg8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "459219944502-0joklbou5e6mmjgu4c0n6hldf30hmd33.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
