@@ -286,18 +286,14 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
         }
         //Datum, Uhrzeit, currentTimeMillis, eintragDatumMillis ermitteln
 
-
-
         data.putExtra(EXTRA_TITLE, title);
         data.putExtra(EXTRA_DESCRIPTION, description);
         data.putExtra(EXTRA_PRIORITY, priority);
-
         data.putExtra(EXTRA_BLUTZUCKER, blutzucker);
         data.putExtra(EXTRA_BE, be);
         data.putExtra(EXTRA_BOLUS, bolus);
         data.putExtra(EXTRA_KORREKTUR, korrektur);
         data.putExtra(EXTRA_BASAL, basal);
-
         data.putExtra(EXTRA_DATUM, datum);
         data.putExtra(EXTRA_UHRZEIT, uhrzeit);
         data.putExtra(EXTRA_CURRENT_TIME_MILLIS, currentTimeMillis);
@@ -318,12 +314,6 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
         intent.putExtra("Uhrzeit", uhrzeit);
         intent.putExtra("currentTimeMillis", currentTimeMillis);
         intent.putExtra("eintragDatumMillis", eintragDatumMillis);
-
-
-
-
-
-
         startActivity(intent);
 
         setResult(RESULT_OK, data);
@@ -348,6 +338,7 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
         }
     }
 
+
     private void DatumEingeben() {
         //TTS.speak("date picker");
         DialogFragment datePicker = new DateFragment();
@@ -369,6 +360,7 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
         tvDatum.setText(datum);
     }
 
+
     private void UhrzeitEingeben() {
         DialogFragment timePicker = new TimeFragment();
         //TTS.speak("time picker");
@@ -384,7 +376,6 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
         editor.apply();
         timePicker.show(getSupportFragmentManager(), "time picker");
     }
-
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {

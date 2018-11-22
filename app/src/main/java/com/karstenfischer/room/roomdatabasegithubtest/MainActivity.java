@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,6 +28,11 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 import java.util.Objects;
@@ -55,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Wichtig zum Reden!!!
         TTS.init(getApplicationContext());
+
+        final FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         coordinatorLayout = findViewById(R.id.coordinatorLayout);
@@ -146,15 +154,7 @@ public class MainActivity extends AppCompatActivity {
 
                 int position=viewHolder.getAdapterPosition();
 
-                long curry = Long.parseLong(
-                        ((TextView)Objects.requireNonNull
-                                        (recyclerView.findViewHolderForAdapterPosition(position))
-                                        .itemView.findViewById(R.id.tvMeineSwipeID)).getText().toString());
 
-                int zuzu = Integer.parseInt(((TextView)Objects.requireNonNull(recyclerView.findViewHolderForAdapterPosition(position)).itemView.findViewById(R.id.tvBlutzucker)).getText().toString());
-
-                TTS.speak("Zucker"+zuzu);
-                TTS.speak("Zeit ei die"+curry);
 
 
 
@@ -211,15 +211,20 @@ public class MainActivity extends AppCompatActivity {
                             //sqldatabase.execSQL("delete from " + TABLE_NAME + " where _id='" + (position + 1) + "'"); //query for delete
                             //list.remove(position);  //then remove item
                             noteViewModel.delete(adapter.getNoteAt(position));
+                            final long currentID = Long.parseLong(
+                                    ((TextView)Objects.requireNonNull
+                                            (recyclerView.findViewHolderForAdapterPosition(position))
+                                            .itemView.findViewById(R.id.tvMeineSwipeID)).getText().toString());
+
+                            int zuzu = Integer.parseInt(((TextView)Objects.requireNonNull(recyclerView.findViewHolderForAdapterPosition(position)).itemView.findViewById(R.id.tvBlutzucker)).getText().toString());
 
 
-
-
-
-
-
-
-
+                            //Eintrag aus Firestore löschen
+                            TTS.speak("löschen aus firestore");
+                            //firestore.collection(String.valueOf(currentID))..
+                            TTS.speak("Zucker"+zuzu);
+                            TTS.speak("Zeit ei die"+currentID);
+                            //todo firestore.collection("Users").document(String.valueOf(currentID)).delete();
 
 
                         }

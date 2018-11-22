@@ -96,11 +96,11 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
             tvUhrzeit = itemView.findViewById(R.id.tvUhrzeit);
             tvCurrentTimeMillis = itemView.findViewById(R.id.tvCurrentTimeMillis);
             tveintragDatumMillis = itemView.findViewById(R.id.tvEintragDatumMillis);
-            ivEmoji= itemView.findViewById(R.id.ivEmoji);
-            coordinatorLayout=itemView.findViewById(R.id.coordinatorLayout);
+            ivEmoji = itemView.findViewById(R.id.ivEmoji);
+            coordinatorLayout = itemView.findViewById(R.id.coordinatorLayout);
 
             tvDatumHeader = itemView.findViewById(R.id.tvDatumHeader);
-            tvMeineSwipeID=itemView.findViewById(R.id.tvMeineSwipeID);
+            tvMeineSwipeID = itemView.findViewById(R.id.tvMeineSwipeID);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -182,23 +182,9 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
 
 
         if (currentNote.getKorrektur() == 0) {
-            //noteHolder.tvKorrektur.setTextSize(5f);
-            //noteHolder.tvKorrekturHeader.setTextSize(5f);
-            //noteHolder.tvKorrektur.setTextSize(currentNote.getKorrektur());
-            //noteHolder.tvKorrekturHeader.setTextSize(currentNote.getKorrektur());
             noteHolder.tvKorrektur.setVisibility(View.GONE);
             noteHolder.tvKorrekturHeader.setVisibility(View.GONE);
             noteHolder.tvKorrektur.setText(String.valueOf(currentNote.getKorrektur()));
-            //int currentNoteL= (int) currentNote.getKorrektur();
-
-            //ConstraintLayout.LayoutParams params = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            //params.setMargins(currentNoteL,currentNoteL,currentNoteL,currentNoteL);
-            //noteHolder.tvKorrektur.setLayoutParams(params);
-            //noteHolder.tvKorrekturHeader.setLayoutParams(params);
-            //noteHolder.tvKorrektur.setText(String.valueOf(currentNote.getKorrektur()));
-            //params.setMargins(0,18,0,0);
-
-            //noteHolder.tvKorrektur.setTextColor(Color.RED);
         } else {
             noteHolder.tvKorrektur.setVisibility(View.VISIBLE);
             noteHolder.tvKorrekturHeader.setVisibility(View.VISIBLE);
@@ -217,13 +203,13 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
         }
 
 
-        if(currentNote.getBlutzucker()<70){
+        if (currentNote.getBlutzucker() < 70) {
             noteHolder.ivEmoji.setImageResource(R.drawable.emoji_blau);
         }
-        if(currentNote.getBlutzucker()>69&&currentNote.getBlutzucker()<200){
+        if (currentNote.getBlutzucker() > 69 && currentNote.getBlutzucker() < 200) {
             noteHolder.ivEmoji.setImageResource(R.drawable.emoji_gruen);
         }
-        if(currentNote.getBlutzucker()>199){
+        if (currentNote.getBlutzucker() > 199) {
             noteHolder.ivEmoji.setImageResource(R.drawable.emoji_rot);
         }
 
