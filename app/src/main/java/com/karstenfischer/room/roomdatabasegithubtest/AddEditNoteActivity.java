@@ -187,7 +187,7 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
         } else {
             //Neuer Eintrag
             automatischOderManuell = "automatisch";
-            TTS.speak("intent automatisch");
+            //TTS.speak("intent automatisch");
             setTitle("Neuer Eintrag");
 
             datum = simpleDateFormatDatum.format(new Date());
@@ -349,7 +349,7 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
     }
 
     private void DatumEingeben() {
-        TTS.speak("date picker");
+        //TTS.speak("date picker");
         DialogFragment datePicker = new DateFragment();
 
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
@@ -371,7 +371,7 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
 
     private void UhrzeitEingeben() {
         DialogFragment timePicker = new TimeFragment();
-        TTS.speak("time picker");
+        //TTS.speak("time picker");
         automatischOderManuell = "manuell";
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
         SharedPreferences.Editor editor;

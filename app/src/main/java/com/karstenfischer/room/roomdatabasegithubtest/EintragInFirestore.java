@@ -29,7 +29,6 @@ public class EintragInFirestore extends AppCompatActivity {
 
         Intent intent = getIntent();
         int blutzucker = intent.getIntExtra("Blutzucker", 0);
-        TTS.speak("blut zwei" + blutzucker);
         float be = intent.getFloatExtra("Broteinheiten", 0);
         float bolus = intent.getFloatExtra("Bolus", 0);
         float korrektur = intent.getFloatExtra("Korrektur", 0);
