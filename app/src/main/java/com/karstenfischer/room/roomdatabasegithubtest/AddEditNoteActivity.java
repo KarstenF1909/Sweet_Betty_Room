@@ -67,6 +67,8 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
     private TextView tvUhrzeit;
     private TextView tvCurrentTimeMillis;
     private TextView tveintragDatumMillis;
+    private TextView tvMeineSwipeID;
+    private TextView tvMeineAddID;
 
     private String automatischOderManuell;
 
@@ -87,6 +89,9 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
     private SimpleDateFormat simpleDateFormatDatum = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
     private SimpleDateFormat simpleDateFormatUhrzeit = new SimpleDateFormat("HH:mm", Locale.GERMAN);
 
+    private int datumOderZeitVeraendertJaNein;
+    private FirebaseFirestore firestore;
+
 
 
 
@@ -99,6 +104,8 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_note);
+
+        firestore=FirebaseFirestore.getInstance();
 
         //Wichtig zum Reden!!!
         TTS.init(getApplicationContext());
@@ -120,7 +127,7 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
         tvUhrzeit = findViewById(R.id.tvUhrzeit);
         tvCurrentTimeMillis = findViewById(R.id.tvCurrentTimeMillis);
         tveintragDatumMillis = findViewById(R.id.tvEintragDatumMillis);
-
+        //tvMeineAddID = findViewById(R.id.tvMeineAddID);
 
         npPriority.setMinValue(1);
         npPriority.setMaxValue(10);
@@ -159,29 +166,39 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
 
 
             blutzuckerHint = intent.getIntExtra(EXTRA_BLUTZUCKER, 0);
-            etBlutzucker.setHint(String.valueOf(blutzuckerHint));
-            etBlutzucker.setHintTextColor(getResources().getColor(R.color.schriftGrauHell));
-
             beHint = intent.getFloatExtra(EXTRA_BE, 0);
-            etBe.setHint(String.valueOf(beHint));
-            etBe.setHintTextColor(getResources().getColor(R.color.schriftGrauHell));
-
             bolusHint = intent.getFloatExtra(EXTRA_BOLUS, 0);
-            etBolus.setHint(String.valueOf(bolusHint));
-            etBolus.setHintTextColor(getResources().getColor(R.color.schriftGrauHell));
-
             korrekturHint = intent.getFloatExtra(EXTRA_KORREKTUR, 0);
-            etKorrektur.setHint(String.valueOf(korrekturHint));
-            etKorrektur.setHintTextColor(getResources().getColor(R.color.schriftGrauHell));
-
             basalHint = intent.getFloatExtra(EXTRA_BASAL, 0);
+
+            etBlutzucker.setHint(String.valueOf(blutzuckerHint));
+            etBe.setHint(String.valueOf(beHint));
+            etBolus.setHint(String.valueOf(bolusHint));
+            etKorrektur.setHint(String.valueOf(korrekturHint));
             etBasal.setHint(String.valueOf(basalHint));
+
+
+            etBlutzucker.setHintTextColor(getResources().getColor(R.color.schriftGrauHell));
+            etBe.setHintTextColor(getResources().getColor(R.color.schriftGrauHell));
+            etBolus.setHintTextColor(getResources().getColor(R.color.schriftGrauHell));
+            etKorrektur.setHintTextColor(getResources().getColor(R.color.schriftGrauHell));
             etBasal.setHintTextColor(getResources().getColor(R.color.schriftGrauHell));
+
 
             tvDatum.setText(intent.getStringExtra(EXTRA_DATUM));
             tvUhrzeit.setText(intent.getStringExtra(EXTRA_UHRZEIT));
+
             currentTimeMillis = intent.getLongExtra(EXTRA_CURRENT_TIME_MILLIS, 0);
+            TTS.speak("current Time Millis"+currentTimeMillis);
+
             eintragDatumMillis = intent.getLongExtra(EXTRA_EINTRAG_DATUM_MILLIS, 0);
+
+
+
+            //tvMeineSwipeID.setText(String.valueOf(currentTimeMillis));   //todo Name swipeID ändern
+            //tvMeineSwipeID.setText("haha");   //todo Name swipeID ändern
+
+
 
 
         } else {
@@ -250,6 +267,7 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
 
         datum = tvDatum.getText().toString();
         uhrzeit = tvUhrzeit.getText().toString();
+        //currentTimeMillis= Long.parseLong(tvMeineSwipeID.getText().toString());
 
 
         Intent data = new Intent();
@@ -266,15 +284,30 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
         else {
             datum = tvDatum.getText().toString();
             uhrzeit = tvUhrzeit.getText().toString();
-            String datumUndUhrzeit = datum + "-" + uhrzeit + ":00";
 
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy-HH:mm:ss", Locale.GERMAN);
-            try {
-                Date startDate = simpleDateFormat.parse(datumUndUhrzeit);
-                currentTimeMillis = startDate != null ? startDate.getTime() : 0;
-            } catch (ParseException e) {
-                e.printStackTrace();
+            firestore.collection("Users").document(String.valueOf(currentTimeMillis)).delete();
+
+            if (datumOderZeitVeraendertJaNein==1){
+                String datumUndUhrzeit = datum + "-" + uhrzeit + ":00";
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy-HH:mm:ss", Locale.GERMAN);
+                try {
+                    Date startDate = simpleDateFormat.parse(datumUndUhrzeit);
+                    currentTimeMillis = startDate != null ? startDate.getTime() : 0;
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
+
+            //currentTimeMillis= Long.parseLong(tvMeineSwipeID.getText().toString());
+
+
+            //SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy-HH:mm:ss", Locale.GERMAN);
+            //try {
+            //    Date startDate = simpleDateFormat.parse(datumUndUhrzeit);
+            //    currentTimeMillis = startDate != null ? startDate.getTime() : 0;
+            //} catch (ParseException e) {
+            //    e.printStackTrace();
+            //}
         }
 
         Date startDate;
@@ -341,6 +374,8 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
 
     private void DatumEingeben() {
         //TTS.speak("date picker");
+        datumOderZeitVeraendertJaNein=1;
+
         DialogFragment datePicker = new DateFragment();
 
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
@@ -362,6 +397,8 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
 
 
     private void UhrzeitEingeben() {
+        datumOderZeitVeraendertJaNein=1;
+
         DialogFragment timePicker = new TimeFragment();
         //TTS.speak("time picker");
         automatischOderManuell = "manuell";
@@ -376,6 +413,7 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
         editor.apply();
         timePicker.show(getSupportFragmentManager(), "time picker");
     }
+
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {

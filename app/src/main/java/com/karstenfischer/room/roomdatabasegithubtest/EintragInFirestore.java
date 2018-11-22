@@ -23,7 +23,7 @@ public class EintragInFirestore extends AppCompatActivity {
         //Wichtig zum Reden!!!
         TTS.init(getApplicationContext());
 
-        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        final FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
 
         Intent intent = getIntent();
@@ -74,23 +74,21 @@ public class EintragInFirestore extends AppCompatActivity {
         finish();
 */
 
-        firestore.collection(String.valueOf("Users")).document(String.valueOf(currentTimeMillis)).collection("Entrys")
-                .add(entry)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        firestore.collection("Users").document(String.valueOf(currentTimeMillis))
+                .set(entry)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
+                    public void onSuccess(Void aVoid) {
                         String TAG = "TAG";
-                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                        Log.d(TAG, "DocumentSnapshot added with ID: " + firestore.collection("Users").getId());
                     }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        String TAG = "TAG";
-                        Log.w(TAG, "Error adding document", e);
-                        TTS.speak("Scheiße");
-                    }
-                });
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                String TAG = "TAG";
+                Log.w(TAG, "Error adding document", e);
+            }
+        });
         finish();
     }
 }

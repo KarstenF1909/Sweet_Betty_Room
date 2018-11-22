@@ -216,15 +216,24 @@ public class MainActivity extends AppCompatActivity {
                                             (recyclerView.findViewHolderForAdapterPosition(position))
                                             .itemView.findViewById(R.id.tvMeineSwipeID)).getText().toString());
 
-                            int zuzu = Integer.parseInt(((TextView)Objects.requireNonNull(recyclerView.findViewHolderForAdapterPosition(position)).itemView.findViewById(R.id.tvBlutzucker)).getText().toString());
+                            int zuzu;
+
+
+                            if(((TextView)Objects.requireNonNull(recyclerView.findViewHolderForAdapterPosition(position)).itemView.findViewById(R.id.tvBlutzucker)).getText().toString().equals(" -- ")){
+
+                                 zuzu =0;
+                            }else{
+                                 zuzu = Integer.parseInt(((TextView)Objects.requireNonNull(recyclerView.findViewHolderForAdapterPosition(position)).itemView.findViewById(R.id.tvBlutzucker)).getText().toString());
+
+                            }
 
 
                             //Eintrag aus Firestore löschen
-                            TTS.speak("löschen aus firestore");
+                            TTS.speak("li la löschen ");
                             //firestore.collection(String.valueOf(currentID))..
-                            TTS.speak("Zucker"+zuzu);
-                            TTS.speak("Zeit ei die"+currentID);
-                            //todo firestore.collection("Users").document(String.valueOf(currentID)).delete();
+                            //TTS.speak("Zucker"+zuzu);
+                            //TTS.speak("Zeit ei die"+currentID);
+                            firestore.collection("Users").document(String.valueOf(currentID)).delete();
 
 
                         }
