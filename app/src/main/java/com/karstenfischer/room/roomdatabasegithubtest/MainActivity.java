@@ -29,6 +29,7 @@ import android.widget.Toast;
 
 
 import java.util.List;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     public static final int ADD_NOTE_REQUEST = 1;
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        final RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
@@ -142,6 +143,19 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(final RecyclerView.ViewHolder viewHolder, int direction) {
+
+                int position=viewHolder.getAdapterPosition();
+
+                long curry = Long.parseLong(
+                        ((TextView)Objects.requireNonNull
+                                        (recyclerView.findViewHolderForAdapterPosition(position))
+                                        .itemView.findViewById(R.id.tvMeineSwipeID)).getText().toString());
+
+                int zuzu = Integer.parseInt(((TextView)Objects.requireNonNull(recyclerView.findViewHolderForAdapterPosition(position)).itemView.findViewById(R.id.tvBlutzucker)).getText().toString());
+
+                TTS.speak("Zucker"+zuzu);
+                TTS.speak("Zeit ei die"+curry);
+
 
 
 

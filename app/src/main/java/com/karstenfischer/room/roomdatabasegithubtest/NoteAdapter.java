@@ -62,11 +62,13 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
         private TextView tvBolusHeader;
         private TextView tvKorrekturHeader;
         private TextView tvBasalHeader;
+        private TextView tvDatumHeader;
 
         private TextView tvDatum;
         private TextView tvUhrzeit;
         private TextView tvCurrentTimeMillis;
         private TextView tveintragDatumMillis;
+        private TextView tvMeineSwipeID;
 
         private ImageView ivEmoji;
 
@@ -94,10 +96,11 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
             tvUhrzeit = itemView.findViewById(R.id.tvUhrzeit);
             tvCurrentTimeMillis = itemView.findViewById(R.id.tvCurrentTimeMillis);
             tveintragDatumMillis = itemView.findViewById(R.id.tvEintragDatumMillis);
-
             ivEmoji= itemView.findViewById(R.id.ivEmoji);
-
             coordinatorLayout=itemView.findViewById(R.id.coordinatorLayout);
+
+            tvDatumHeader = itemView.findViewById(R.id.tvDatumHeader);
+            tvMeineSwipeID=itemView.findViewById(R.id.tvMeineSwipeID);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -229,9 +232,9 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
         noteHolder.tvUhrzeit.setText(String.valueOf(currentNote.getUhrzeit()));
         //noteHolder.tvCurrentTimeMillis.setText(String.valueOf(currentNote.getCurrentTimeMillis()));
         //noteHolder.tveintragDatumMillis.setText(String.valueOf(currentNote.getEintragDatumMillis()));
-        noteHolder.tvCurrentTimeMillis.setText("Datum");
+        noteHolder.tvMeineSwipeID.setText(String.valueOf(currentNote.getCurrentTimeMillis()));
         noteHolder.tveintragDatumMillis.setText("Uhrzeit");
-
+        noteHolder.tvDatumHeader.setText("Datum");
     }
 
     //Für onSwipe
