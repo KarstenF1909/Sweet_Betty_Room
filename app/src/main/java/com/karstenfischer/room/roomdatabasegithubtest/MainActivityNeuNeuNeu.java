@@ -12,6 +12,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -26,6 +27,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,7 +42,7 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
     public static final int UNDO_DELETE_REQUEST = 3;
     final NoteAdapter adapter = new NoteAdapter();
     private NoteViewModel noteViewModel;
-    private CoordinatorLayout coordinatorLayout;
+
     private Note note;
     private int diePosition;
     private RecyclerView recyclerView;
@@ -48,6 +50,9 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
     private FloatingActionButton fabTheme;
     private android.support.v7.widget.Toolbar toolbar;
     private String radioButtonPressed;
+    private ImageView ivLogoBetty;
+    private CollapsingToolbarLayout collapsingToolbar;
+    private CoordinatorLayout coordinatorLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,15 +66,26 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
         TTS.init(getApplicationContext());
 
         //WelchesTheme();
-        SharedPreferences sharedPreferences=getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        radioButtonPressed=sharedPreferences.getString("radioButtonPressed","duesterTheme");
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+
+
+
+        radioButtonPressed = sharedPreferences.getString("radioButtonPressed", "duesterTheme");
 
         //assert radioButtonPressed != null;
-        if(radioButtonPressed.equals("grün")){
+        if (radioButtonPressed.equals("grün")) {
             setTheme(R.style.greentheme);
         }
-        if(radioButtonPressed.equals("dunkel")){
+        if (radioButtonPressed.equals("dunkel")) {
             setTheme(R.style.duestertheme);
+        }
+        if (radioButtonPressed.equals("Army")) {
+            setTheme(R.style.Army);
+            //ivLogoBetty.setBackground(getDrawable(R.drawable.logo001army));
+            //ivLogo.setImageResource(getResources().getDrawable().);
+        }
+        if (radioButtonPressed.equals("EmmasChoice")) {
+            setTheme(R.style.EmmasChoice);
         }
         TTS.speak(radioButtonPressed);
 
@@ -81,37 +97,42 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
 //startActivity(intent);
 
 
-
-
         final FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
-         toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         coordinatorLayout = findViewById(R.id.coordinatorLayout);
         fabTheme = findViewById(R.id.fabTheme);
+        ivLogoBetty=findViewById(R.id.ivLogoBetty);
+        collapsingToolbar=findViewById(R.id.collapsingToolbar);
 
 
-
-
-
-
+        if (radioButtonPressed.equals("Army")) {
+            collapsingToolbar.setBackgroundResource(R.drawable.backgroundarmy1);
+            ivLogoBetty.setImageResource(R.drawable.logo001army);
+            //coordinatorLayout.setBackgroundResource(R.drawable.backgroundarmy);
+            //ivLogo.setImageResource(getResources().getDrawable().);
+        }
+        if (radioButtonPressed.equals("grün")) {
+            collapsingToolbar.setBackgroundResource(R.drawable.collapsegreen);
+            //ivLogoBetty.setImageResource(R.drawable.logo001army);
+            //coordinatorLayout.setBackgroundResource(R.drawable.backgroundarmy);
+            //ivLogo.setImageResource(getResources().getDrawable().);
+        }
 
         fabTheme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent  intent=new Intent(getApplicationContext(),EinstellungenTheme.class);
+                Intent intent = new Intent(getApplicationContext(), EinstellungenTheme.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                finish();
             }
         });
-
-
-
-
 
 
         //if (toolbar != null) {
         //    setSupportActionBar(toolbar);
         //}
-
 
 
         FloatingActionButton fabAdd = findViewById(R.id.fabAdd);
@@ -125,12 +146,10 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
         });
 
 
-
         final RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
-
 
 
         noteViewModel = ViewModelProviders.of(this).get(NoteViewModel.class);
@@ -143,6 +162,21 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
             }
         });
 
+
+
+
+
+        //todo*******************************************************************
+
+        //PreferenceChosen preferenceChosen=(PreferenceChosen) getApplicationContext();
+
+
+
+
+        String chosenPref=radioButtonPressed;
+        PreferenceChosen preferenceChosen = new PreferenceChosen();
+        PreferenceChosen.setChosenPref(chosenPref);
+        TTS.speak("preference Chosen"+chosenPref);
 
 
 
@@ -162,65 +196,64 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
                     final int position = viewHolder.getAdapterPosition(); //get position which is swipe
 
                     final int blutzucker = Integer.parseInt(
-                            ((TextView)Objects.requireNonNull
+                            ((TextView) Objects.requireNonNull
                                     (recyclerView.findViewHolderForAdapterPosition(position))
                                     .itemView.findViewById(R.id.tvBlutzucker)).getText().toString());
 
                     final float be = Float.parseFloat(
-                            ((TextView)Objects.requireNonNull
+                            ((TextView) Objects.requireNonNull
                                     (recyclerView.findViewHolderForAdapterPosition(position))
                                     .itemView.findViewById(R.id.tvBe)).getText().toString());
 
                     final float bolus = Float.parseFloat(
-                            ((TextView)Objects.requireNonNull
+                            ((TextView) Objects.requireNonNull
                                     (recyclerView.findViewHolderForAdapterPosition(position))
                                     .itemView.findViewById(R.id.tvBolus)).getText().toString());
 
                     final float korrektur = Float.parseFloat(
-                            ((TextView)Objects.requireNonNull
+                            ((TextView) Objects.requireNonNull
                                     (recyclerView.findViewHolderForAdapterPosition(position))
                                     .itemView.findViewById(R.id.tvKorrektur)).getText().toString());
 
                     final float basal = Float.parseFloat(
-                            ((TextView)Objects.requireNonNull
+                            ((TextView) Objects.requireNonNull
                                     (recyclerView.findViewHolderForAdapterPosition(position))
                                     .itemView.findViewById(R.id.tvBasal)).getText().toString());
 
                     final long currentTimeMillis = Long.parseLong(
-                            ((TextView)Objects.requireNonNull
+                            ((TextView) Objects.requireNonNull
                                     (recyclerView.findViewHolderForAdapterPosition(position))
                                     .itemView.findViewById(R.id.tvCurrentTimeMillis)).getText().toString());
 
                     final long eintragDatumMillis = Long.parseLong(
-                            ((TextView)Objects.requireNonNull
+                            ((TextView) Objects.requireNonNull
                                     (recyclerView.findViewHolderForAdapterPosition(position))
                                     .itemView.findViewById(R.id.tvEintragDatumMillis)).getText().toString());
 
                     final String datum =
-                            ((TextView)Objects.requireNonNull
+                            ((TextView) Objects.requireNonNull
                                     (recyclerView.findViewHolderForAdapterPosition(position))
                                     .itemView.findViewById(R.id.tvDatum)).getText().toString();
 
                     final String uhrzeit =
-                            ((TextView)Objects.requireNonNull
+                            ((TextView) Objects.requireNonNull
                                     (recyclerView.findViewHolderForAdapterPosition(position))
                                     .itemView.findViewById(R.id.tvUhrzeit)).getText().toString();
 
                     final String title =
-                            ((TextView)Objects.requireNonNull
+                            ((TextView) Objects.requireNonNull
                                     (recyclerView.findViewHolderForAdapterPosition(position))
                                     .itemView.findViewById(R.id.tvTitle)).getText().toString();
 
                     final String description =
-                            ((TextView)Objects.requireNonNull
+                            ((TextView) Objects.requireNonNull
                                     (recyclerView.findViewHolderForAdapterPosition(position))
                                     .itemView.findViewById(R.id.tvDescription)).getText().toString();
 
                     final int priority = Integer.parseInt(
-                            ((TextView)Objects.requireNonNull
+                            ((TextView) Objects.requireNonNull
                                     (recyclerView.findViewHolderForAdapterPosition(position))
                                     .itemView.findViewById(R.id.tvPriority)).getText().toString());
-
 
 
                     Snackbar snackbar = Snackbar
@@ -250,7 +283,7 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
                             intent.putExtra(UndoDeleteNote.EXTRA_KORREKTUR, korrektur);
                             intent.putExtra(UndoDeleteNote.EXTRA_BASAL, basal);
                             intent.putExtra(UndoDeleteNote.EXTRA_DATUM, datum);
-                            intent.putExtra(UndoDeleteNote.EXTRA_UHRZEIT,uhrzeit);
+                            intent.putExtra(UndoDeleteNote.EXTRA_UHRZEIT, uhrzeit);
                             intent.putExtra(UndoDeleteNote.EXTRA_CURRENT_TIME_MILLIS, currentTimeMillis);
                             intent.putExtra(UndoDeleteNote.EXTRA_EINTRAG_DATUM_MILLIS, eintragDatumMillis);
 
@@ -272,9 +305,8 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
                     snackbar.show();
 
                     //Eintrag aus Firestore löschen todo wieder aktivieren!
-                            firestore.collection("Users").document(String.valueOf(currentTimeMillis)).delete();
+                    firestore.collection("Users").document(String.valueOf(currentTimeMillis)).delete();
                     //TTS.speak("li la löschen ");
-
 
 
                     noteViewModel.getAllNotes().observe(MainActivityNeuNeuNeu.this, new Observer<List<Note>>() {
@@ -317,14 +349,10 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
                 intent.putExtra(AddEditNoteActivity.EXTRA_EINTRAG_DATUM_MILLIS, note.getEintragDatumMillis());
 
 
-
                 startActivityForResult(intent, EDIT_NOTE_REQUEST);
             }
         });
     }
-
-
-
 
 
     @Override
@@ -344,7 +372,7 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
             String uhrzeit = data.getStringExtra(AddEditNoteActivity.EXTRA_UHRZEIT);
             long currentTimeMillis = data.getLongExtra(AddEditNoteActivity.EXTRA_CURRENT_TIME_MILLIS, 0);
             long eintragDatumMillis = data.getLongExtra(AddEditNoteActivity.EXTRA_EINTRAG_DATUM_MILLIS, 0);
-            int eintragID=data.getIntExtra(AddEditNoteActivity.EXTRA_ID, 0);
+            int eintragID = data.getIntExtra(AddEditNoteActivity.EXTRA_ID, 0);
 
             note = new Note(title, description, priority, blutzucker, be, bolus, korrektur, basal, datum, uhrzeit, currentTimeMillis, eintragDatumMillis);
             noteViewModel.insert(note);
@@ -400,6 +428,7 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
     private void WelchesTheme() {
 
 

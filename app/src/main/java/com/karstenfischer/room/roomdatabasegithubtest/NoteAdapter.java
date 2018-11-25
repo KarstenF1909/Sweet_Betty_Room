@@ -31,7 +31,8 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
 
     private OnItemClickListener listener;
     private Typeface myFont;
-    private String theme;
+    private Typeface myFontHeader;
+    private String theme="";
     //SharedPreferences sharedPreferences;
     Context context;
 
@@ -99,6 +100,8 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
 
         private CoordinatorLayout coordinatorLayout;
 
+
+
         NoteHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
@@ -131,6 +134,24 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
             viewForeground = itemView.findViewById(R.id.view_foreground);
 
 
+
+//todo*******************************************************************
+            //String chosenPreference="";
+            ////PreferenceChosen preferenceChosen = new PreferenceChosen(chosenPreference);
+            //chosenPreference= PreferenceChosen.getChosenPref();
+            //theme=chosenPreference;
+
+
+
+
+
+
+
+
+
+
+
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -149,6 +170,14 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
         View itemView = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.note_item_neu_neu_neu, viewGroup, false);
 
+        //todo*******************************************************************
+        //String chosenPreference="";
+        theme= PreferenceChosen.getChosenPref();
+
+
+
+
+
         //Context context=viewGroup.getContext();
         //SharedPreferences sharedPreferences=context.getSharedPreferences("myPrefs",Context.MODE_PRIVATE);
         //theme=sharedPreferences.getString("radioButtonPressed","dunkel");
@@ -165,15 +194,27 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
 
         SharedPreferences   sharedPreferences=PreferenceManager.getDefaultSharedPreferences(viewGroup.getContext());
         //SharedPreferences sharedPreferences =viewGroup.getContext().getSharedPreferences("myPrefs",Context.MODE_PRIVATE);
-        theme=sharedPreferences.getString("radioButtonPressed","blöde");
+        //theme=sharedPreferences.getString("radioButtonPressed","blöde");
         if(theme.equals("dunkel")){
-            myFont = Typeface.createFromAsset(viewGroup.getContext().getAssets(), "font/Oswald-Regular.ttf");
+            myFont = Typeface.createFromAsset(viewGroup.getContext().getAssets(), "font/IndieFlower.ttf");
+            myFontHeader = Typeface.createFromAsset(viewGroup.getContext().getAssets(), "font/Gruppo-Regular.ttf");
         }
         if(theme.equals("grün")){
-            myFont = Typeface.createFromAsset(viewGroup.getContext().getAssets(), "font/GOUDYSTO.TTF");
-        }
+            myFont = Typeface.createFromAsset(viewGroup.getContext().getAssets(), "font/Monoton-Regular.ttf");
+            myFontHeader = Typeface.createFromAsset(viewGroup.getContext().getAssets(), "font/Gruppo-Regular.ttf");
 
-        myFont = Typeface.createFromAsset(viewGroup.getContext().getAssets(), "font/IndieFlower.ttf");
+        }
+        if(theme.equals("Army")){
+            myFont = Typeface.createFromAsset(viewGroup.getContext().getAssets(), "font/AllertaStencil-Regular.ttf");
+            myFontHeader = Typeface.createFromAsset(viewGroup.getContext().getAssets(), "font/AllertaStencil-Regular.ttf");
+
+        }
+        if(theme.equals("EmmasChoice")){
+            myFont = Typeface.createFromAsset(viewGroup.getContext().getAssets(), "font/IndieFlower.ttf");
+            myFontHeader = Typeface.createFromAsset(viewGroup.getContext().getAssets(), "font/IndieFlower.ttf");
+
+        }
+        //myFont = Typeface.createFromAsset(viewGroup.getContext().getAssets(), "font/IndieFlower.ttf");
 
 
 
@@ -216,6 +257,45 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
 
         //AssetManager am = getItemViewType(position)
 
+        if(theme.equals("grün")){
+            noteHolder.tvBlutzucker.setTextSize(85);
+            noteHolder.tvBe.setTextSize(24);
+            noteHolder.tvBolus.setTextSize(24);
+            noteHolder.tvKorrektur.setTextSize(24);
+            noteHolder.tvBasal.setTextSize(24);
+            noteHolder.tvDatum.setTextSize(20);
+            noteHolder.tvUhrzeit.setTextSize(30);
+            noteHolder.tvTitle.setTextSize(24);
+            noteHolder.tvDescription.setTextSize(12);
+
+            noteHolder.tvBlutzuckerHeader.setTextSize(12);
+            noteHolder.tvBeHeader.setTextSize(12);
+            noteHolder.tvBolusHeader.setTextSize(12);
+            noteHolder.tvKorrekturHeader.setTextSize(12);
+            noteHolder.tvBasalHeader.setTextSize(12);
+            noteHolder.tvDatumHeader.setTextSize(12);
+            noteHolder.tvUhrzeitHeader.setTextSize(12);
+        }
+        if(theme.equals("Army")){
+            noteHolder.tvBlutzucker.setTextSize(85);
+            noteHolder.tvBe.setTextSize(24);
+            noteHolder.tvBolus.setTextSize(24);
+            noteHolder.tvKorrektur.setTextSize(24);
+            noteHolder.tvBasal.setTextSize(24);
+            noteHolder.tvDatum.setTextSize(25);
+            noteHolder.tvUhrzeit.setTextSize(30);
+            noteHolder.tvTitle.setTextSize(24);
+            noteHolder.tvDescription.setTextSize(12);
+
+            noteHolder.tvBlutzuckerHeader.setTextSize(14);
+            noteHolder.tvBeHeader.setTextSize(14);
+            noteHolder.tvBolusHeader.setTextSize(14);
+            noteHolder.tvKorrekturHeader.setTextSize(14);
+            noteHolder.tvBasalHeader.setTextSize(14);
+            noteHolder.tvDatumHeader.setTextSize(14);
+            noteHolder.tvUhrzeitHeader.setTextSize(14);
+        }
+
         noteHolder.tvBlutzucker.setTypeface(myFont);
         noteHolder.tvBe.setTypeface(myFont);
         noteHolder.tvBolus.setTypeface(myFont);
@@ -225,6 +305,16 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
         noteHolder.tvUhrzeit.setTypeface(myFont);
         noteHolder.tvTitle.setTypeface(myFont);
         noteHolder.tvDescription.setTypeface(myFont);
+
+
+        noteHolder.tvBlutzuckerHeader.setTypeface(myFontHeader);
+        noteHolder.tvBeHeader.setTypeface(myFontHeader);
+        noteHolder.tvBolusHeader.setTypeface(myFontHeader);
+        noteHolder.tvKorrekturHeader.setTypeface(myFontHeader);
+        noteHolder.tvBasalHeader.setTypeface(myFontHeader);
+        noteHolder.tvDatumHeader.setTypeface(myFontHeader);
+        noteHolder.tvUhrzeitHeader.setTypeface(myFontHeader);
+
 
 
         noteHolder.tvPriority.setVisibility(View.GONE);
@@ -314,18 +404,18 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
             noteHolder.tvTitle.setVisibility(View.GONE);
         } else {
             noteHolder.tvTitle.setVisibility(View.VISIBLE);
-            noteHolder.tvTitle.setText(String.valueOf(currentNote.getTitle()));  //todo
-        }
-
-
-        //noteHolder.tvTitle.setText(theme);
+     }
+        noteHolder.tvTitle.setText(String.valueOf(currentNote.getTitle()));  //todo
+        noteHolder.tvTitle.setVisibility(View.VISIBLE);
+        //noteHolder.tvTitle.setText("scheiße"+theme);
 
         if (String.valueOf(currentNote.getDescription()).isEmpty()) {
             noteHolder.tvDescription.setVisibility(View.GONE);
         } else {
             noteHolder.tvDescription.setVisibility(View.VISIBLE);
-            noteHolder.tvDescription.setText(String.valueOf(currentNote.getDescription()));  //todo
+
         }
+        noteHolder.tvDescription.setText(String.valueOf(currentNote.getDescription()));  //todo
     }
     //Für onSwipe
     Note getNoteAt(int position) {

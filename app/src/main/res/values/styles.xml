@@ -32,8 +32,8 @@
         <item name="colorPrimary">#c4ffc8</item>
         <item name="colorPrimaryDark">#84ff8d</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="backgroundcolor">#ffffff</item>
-        <item name="cardbackground1">#d5fdef</item>
+        <item name="backgroundcolor">#021b00</item>
+        <item name="cardbackground1">#83fd8c</item>
         <item name="cardbackground2">#d4fbed</item>
         <item name="textcolor1">#262626</item>
         <item name="textcolor2">#808080</item>
@@ -131,5 +131,36 @@
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
     </style>
 
+    <style name="Army" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">#212121</item>
+    <item name="colorPrimaryDark">#000000</item>
+    <item name="colorAccent">@color/colorAccent</item>
+    <item name="backgroundcolor">#5a6055</item>
+    <item name="cardbackground1">#787878</item>
+    <item name="cardbackground2">#898989</item>
+    <item name="textcolor2">#5e5e5e</item>
+    <item name="textcolor1">#393e39</item>
+    <item name="textcolor3">#b02b2b</item>
+    <item name="tintcolor">#ffffff</item>
+    <item name="buttoncolor">#c964fc</item>
+    <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+    </style>
+
+    <style name="EmmasChoice" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#212121</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="backgroundcolor">#ffee00</item>
+        <item name="cardbackground1">#787878</item>
+        <item name="cardbackground2">#00089f</item>
+        <item name="textcolor2">#060079</item>
+        <item name="textcolor1">#646464</item>
+        <item name="textcolor3">#b02b2b</item>
+        <item name="tintcolor">#ffffff</item>
+        <item name="buttoncolor">#c964fc</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+    </style>
 
 </resources>

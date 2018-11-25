@@ -1,6 +1,7 @@
 package com.karstenfischer.room.roomdatabasegithubtest;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -58,30 +59,49 @@ private String radioButtonPressed;
         String theme=sharedPreferences.getString("einstellungTheme","duesterTheme");
 
         //assert theme != null;
-        if(theme.equals("greentheme")){
+        if(theme.equals("grün")){
             setTheme(R.style.greentheme);
         }
-        if(theme.equals("duestertheme")){
+        if(theme.equals("dunkel")){
             setTheme(R.style.duestertheme);
+        }
+        if(theme.equals("Army")){
+            setTheme(R.style.Army);
         }
     }
 
     public void CheckRadioButton(View view) {
         int radioId=radioGroup.getCheckedRadioButtonId();
         radioButton=findViewById(radioId);
-        radioButtonPressed=radioButton.getText().toString();
+        radioButtonPressed=radioButton.getText().toString().trim();
+
+        if(radioButtonPressed.equals("Emmas Choice")) {
+            radioButtonPressed = "EmmasChoice";
+            editor.putString("radioButtonPressed",radioButtonPressed);
+            editor.apply();
+        }
+
 
         editor.putString("radioButtonPressed",radioButtonPressed);
         editor.apply();
 
         TTS.speak("radio button"+radioButtonPressed);
 
-        if(radioButtonPressed.equals("greentheme")){
+        if(radioButtonPressed.equals("grün")){
             setTheme(R.style.greentheme);
         }
-        if(radioButtonPressed.equals("duestertheme")){
+        if(radioButtonPressed.equals("dunkel")){
             setTheme(R.style.duestertheme);
         }
-
+        if(radioButtonPressed.equals("Army")){
+            setTheme(R.style.Army);
+        }
+        if(radioButtonPressed.equals("EmmasChoice")){
+            setTheme(R.style.EmmasChoice);
+        }
+        Intent intent=new Intent(getApplicationContext(),MainActivityNeuNeuNeu.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+     startActivity(intent);
+        finish();
     }
 }
