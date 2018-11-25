@@ -9,28 +9,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
-
-        <activity android:name=".MainActivity"
-            android:launchMode="singleTop"
+        <activity
+            android:name=".MainActivityNeuNeuNeu"
             android:configChanges="orientation"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/duestertheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-<activity android:name=".EintragInFirestore"/>
-
-        <activity android:name=".AddEditNoteActivity"
+        <activity android:name=".EintragInFirestore" />
+        <activity android:name=".UndoDeleteNote" />
+        <activity
+            android:name=".AddEditNoteActivity"
             android:configChanges="orientation"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/duesterAddEdittheme"
-            android:parentActivityName=".MainActivity"/>
+            android:theme="@style/duesterAddEdittheme" />
+        <activity android:name=".EinstellungenTheme"></activity>
+
+
+
     </application>
 
 </manifest>

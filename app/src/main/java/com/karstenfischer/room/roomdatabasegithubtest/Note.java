@@ -24,6 +24,8 @@ public class Note {
     private long currentTimeMillis;
     private long eintragDatumMillis;
 
+    //private long eintragID;
+
     //Constructor
     public Note(String title, String description, int priority,int blutzucker,float be,float bolus,float korrektur,float basal,String datum,String uhrzeit,long currentTimeMillis,long eintragDatumMillis) {
         this.title = title;
@@ -40,6 +42,8 @@ public class Note {
         this.uhrzeit = uhrzeit;
         this.currentTimeMillis = currentTimeMillis;
         this.eintragDatumMillis = eintragDatumMillis;
+
+
     }
 
 
@@ -100,4 +104,8 @@ public class Note {
     public long getEintragDatumMillis() {
         return eintragDatumMillis;
     }
+
+   // public long getEintragID() {
+        //return eintragID;
+    //}
 }

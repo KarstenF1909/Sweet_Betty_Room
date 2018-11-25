@@ -32,7 +32,7 @@
         <item name="colorPrimary">#c4ffc8</item>
         <item name="colorPrimaryDark">#84ff8d</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="backgroundcolor">#e5fff6</item>
+        <item name="backgroundcolor">#ffffff</item>
         <item name="cardbackground1">#d5fdef</item>
         <item name="cardbackground2">#d4fbed</item>
         <item name="textcolor1">#262626</item>
@@ -98,13 +98,13 @@
         <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 
-    <style name="duestertheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="duestertheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#212121</item>
         <item name="colorPrimaryDark">#000000</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="backgroundcolor">#434343</item>
-        <item name="cardbackground1">#4d4d4d</item>
+        <item name="backgroundcolor">#202020</item>
+        <item name="cardbackground1">#202020</item>
         <item name="cardbackground2">#101010</item>
         <item name="textcolor2">#949494</item>
         <item name="textcolor1">#646464</item>
@@ -112,6 +112,7 @@
         <item name="tintcolor">#ffffff</item>
         <item name="buttoncolor">#c964fc</item>
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+
     </style>
 
     <style name="duesterAddEdittheme" parent="Theme.AppCompat.Light.DarkActionBar">

@@ -37,6 +37,8 @@ public class EintragInFirestore extends AppCompatActivity {
         long currentTimeMillis = intent.getLongExtra("currentTimeMillis", 0);
         long eintragDatumMillis = intent.getLongExtra("eintragDatumMillis", 0);
 
+        int eintragID= intent.getIntExtra("eintragID", 0);
+
 
         Map<String, Object> entry = new HashMap<>();
         entry.put("1-Blutzucker", blutzucker);
@@ -48,10 +50,6 @@ public class EintragInFirestore extends AppCompatActivity {
         entry.put("7-Uhrzeit", uhrzeit);
         entry.put("8-currentTimeMillis", currentTimeMillis);
         entry.put("9-eintragDatumMillis", eintragDatumMillis);
-
-
-        TTS.speak("current time"+currentTimeMillis);
-        String eintragID = datum + "_" + uhrzeit;
 
 
 /*

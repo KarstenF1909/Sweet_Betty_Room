@@ -83,6 +83,8 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
     private long currentTimeMillis;
     private long eintragDatumMillis;
 
+    private long eintragID;
+
     private FloatingActionButton fabDate;
     private FloatingActionButton fabTime;
 
@@ -160,6 +162,8 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
         if (intent.hasExtra(EXTRA_ID)) {
             automatischOderManuell = "manuell";
             setTitle("Eintrag ändern");
+
+
             etTitle.setText(intent.getStringExtra(EXTRA_TITLE));
             etDescription.setText(intent.getStringExtra(EXTRA_DESCRIPTION));
             npPriority.setValue(intent.getIntExtra(EXTRA_PRIORITY, 1));
@@ -189,9 +193,13 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
             tvUhrzeit.setText(intent.getStringExtra(EXTRA_UHRZEIT));
 
             currentTimeMillis = intent.getLongExtra(EXTRA_CURRENT_TIME_MILLIS, 0);
-            TTS.speak("current Time Millis"+currentTimeMillis);
+            //TTS.speak("current Time Millis"+currentTimeMillis);
 
             eintragDatumMillis = intent.getLongExtra(EXTRA_EINTRAG_DATUM_MILLIS, 0);
+
+           int eintragID=intent.getIntExtra(EXTRA_ID,0);
+
+            //TTS.speak("eintrag eintrag"+eintragID);
 
 
 
@@ -262,8 +270,7 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
             basal = Float.parseFloat(etBasal.getText().toString());
         }
 
-        title = etTitle.getText().toString();
-        description = etDescription.getText().toString();
+
 
         datum = tvDatum.getText().toString();
         uhrzeit = tvUhrzeit.getText().toString();
@@ -285,6 +292,8 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
             datum = tvDatum.getText().toString();
             uhrzeit = tvUhrzeit.getText().toString();
 
+
+            /*todo vielleicht sollte ich eine andere ID finden...*/
             firestore.collection("Users").document(String.valueOf(currentTimeMillis)).delete();
 
             if (datumOderZeitVeraendertJaNein==1){
@@ -347,6 +356,7 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
         intent.putExtra("Uhrzeit", uhrzeit);
         intent.putExtra("currentTimeMillis", currentTimeMillis);
         intent.putExtra("eintragDatumMillis", eintragDatumMillis);
+        intent.putExtra("eintragID", eintragID);
         startActivity(intent);
 
         setResult(RESULT_OK, data);
