@@ -2,8 +2,10 @@ package com.karstenfischer.room.roomdatabasegithubtest;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.DialogFragment;
@@ -65,10 +67,17 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
 
     private TextView tvDatum;
     private TextView tvUhrzeit;
-    private TextView tvCurrentTimeMillis;
-    private TextView tveintragDatumMillis;
+    private TextView tvDatumHeader;
+    private TextView tvUhrzeitHeader;
     private TextView tvMeineSwipeID;
     private TextView tvMeineAddID;
+
+    private TextView tvBlutzuckerHeader;
+    private TextView tvBeHeader;
+    private TextView tvBolusHeader;
+    private TextView tvKorrekturHeader;
+    private TextView tvBasalHeader;
+
 
     private String automatischOderManuell;
 
@@ -94,7 +103,8 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
     private int datumOderZeitVeraendertJaNein;
     private FirebaseFirestore firestore;
 
-
+    private Typeface myFont;
+    private Typeface myFontHeader;
 
 
     @Override
@@ -105,9 +115,41 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         super.onCreate(savedInstanceState);
+
+
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+
+
+        String radioButtonPressed;
+        radioButtonPressed = sharedPreferences.getString("radioButtonPressed", "duesterTheme");
+
+        //assert radioButtonPressed != null;
+
+        TTS.speak(radioButtonPressed);
+
+        if (radioButtonPressed.equals("grün")) {
+            setTheme(R.style.greentheme);
+        }
+        if (radioButtonPressed.equals("dunkel")) {
+            setTheme(R.style.duestertheme);
+        }
+        if (radioButtonPressed.equals("Army")) {
+            setTheme(R.style.Army);
+            //ivLogoBetty.setBackground(getDrawable(R.drawable.logo001army));
+            //ivLogo.setImageResource(getResources().getDrawable().);
+        }
+        if (radioButtonPressed.equals("EmmasChoice")) {
+            setTheme(R.style.EmmasChoice);
+        }
+
+        if (radioButtonPressed.equals("Jah")) {
+            setTheme(R.style.Jah);
+        }
+
+
         setContentView(R.layout.activity_add_note);
 
-        firestore=FirebaseFirestore.getInstance();
+        firestore = FirebaseFirestore.getInstance();
 
         //Wichtig zum Reden!!!
         TTS.init(getApplicationContext());
@@ -127,12 +169,196 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
 
         tvDatum = findViewById(R.id.tvDatum);
         tvUhrzeit = findViewById(R.id.tvUhrzeit);
-        tvCurrentTimeMillis = findViewById(R.id.tvCurrentTimeMillis);
-        tveintragDatumMillis = findViewById(R.id.tvEintragDatumMillis);
+        tvDatumHeader = findViewById(R.id.tvDatumHeader);
+        tvUhrzeitHeader = findViewById(R.id.tvUhrzeitHeader);
+
+        tvBlutzuckerHeader = findViewById(R.id.tvBlutzuckerHeader);
+        tvBeHeader = findViewById(R.id.tvBeHeader);
+        tvBolusHeader = findViewById(R.id.tvBolusHeader);
+        tvKorrekturHeader = findViewById(R.id.tvKorrekturHeader);
+        tvBasalHeader = findViewById(R.id.tvBasalHeader);
+
+
         //tvMeineAddID = findViewById(R.id.tvMeineAddID);
+
 
         npPriority.setMinValue(1);
         npPriority.setMaxValue(10);
+
+
+        if (radioButtonPressed.equals("dunkel")) {
+
+            myFont = Typeface.createFromAsset(this.getAssets(), "font/IndieFlower.ttf");
+            myFontHeader = Typeface.createFromAsset(this.getAssets(), "font/Gruppo-Regular.ttf");
+
+
+        }
+        if (radioButtonPressed.equals("grün")) {
+
+            myFont = Typeface.createFromAsset(this.getAssets(), "font/Monoton-Regular.ttf");
+            myFontHeader = Typeface.createFromAsset(this.getAssets(), "font/Gruppo-Regular.ttf");
+
+
+
+        }
+        if (radioButtonPressed.equals("Army")) {
+
+            myFont = Typeface.createFromAsset(this.getAssets(), "font/AllertaStencil-Regular.ttf");
+            myFontHeader = Typeface.createFromAsset(this.getAssets(), "font/AllertaStencil-Regular.ttf");
+
+
+
+        }
+        if (radioButtonPressed.equals("EmmasChoice")) {
+
+            myFont = Typeface.createFromAsset(this.getAssets(), "font/IndieFlower.ttf");
+            myFontHeader = Typeface.createFromAsset(this.getAssets(), "font/IndieFlower.ttf");
+
+
+        }
+        if (radioButtonPressed.equals("Jah")) {
+
+            myFont = Typeface.createFromAsset(this.getAssets(), "font/FrederickatheGreat-Regular.ttf");
+            myFontHeader = Typeface.createFromAsset(this.getAssets(), "font/IndieFlower.ttf");
+
+
+        }
+
+
+
+
+        if (radioButtonPressed.equals("dunkel")) {
+
+            tvDatum.setTextSize(24);
+            tvUhrzeit.setTextSize(24);
+
+            tvDatumHeader.setTextSize(22);
+            tvUhrzeitHeader.setTextSize(22);
+
+            etBlutzucker.setTextSize(24);
+            etBe.setTextSize(24);
+            etBolus.setTextSize(24);
+            etKorrektur.setTextSize(24);
+            etBasal.setTextSize(24);
+
+            tvBlutzuckerHeader.setTextSize(22);
+            tvBeHeader.setTextSize(22);
+            tvBolusHeader.setTextSize(22);
+            tvKorrekturHeader.setTextSize(22);
+            tvBasalHeader.setTextSize(22);
+        }
+
+
+
+
+
+
+
+
+        if (radioButtonPressed.equals("grün")) {
+
+            tvDatum.setTextSize(22);
+            tvUhrzeit.setTextSize(22);
+
+            tvDatumHeader.setTextSize(18);
+            tvUhrzeitHeader.setTextSize(18);
+
+            etBlutzucker.setTextSize(22);
+            etBe.setTextSize(22);
+            etBolus.setTextSize(22);
+            etKorrektur.setTextSize(22);
+            etBasal.setTextSize(22);
+
+            tvBlutzuckerHeader.setTextSize(18);
+            tvBeHeader.setTextSize(18);
+            tvBolusHeader.setTextSize(18);
+            tvKorrekturHeader.setTextSize(18);
+            tvBasalHeader.setTextSize(18);
+        }
+        if (radioButtonPressed.equals("Army")) {
+
+            tvDatum.setTextSize(24);
+            tvUhrzeit.setTextSize(24);
+
+            tvDatumHeader.setTextSize(24);
+            tvUhrzeitHeader.setTextSize(24);
+
+            etBlutzucker.setTextSize(24);
+            etBe.setTextSize(24);
+            etBolus.setTextSize(24);
+            etKorrektur.setTextSize(24);
+            etBasal.setTextSize(24);
+
+            tvBlutzuckerHeader.setTextSize(14);
+            tvBeHeader.setTextSize(14);
+            tvBolusHeader.setTextSize(14);
+            tvKorrekturHeader.setTextSize(14);
+            tvBasalHeader.setTextSize(14);
+        }
+
+        if (radioButtonPressed.equals("EmmasChoice")) {
+
+            tvDatum.setTextSize(24);
+            tvUhrzeit.setTextSize(24);
+
+            tvDatumHeader.setTextSize(24);
+            tvUhrzeitHeader.setTextSize(24);
+
+            etBlutzucker.setTextSize(24);
+            etBe.setTextSize(24);
+            etBolus.setTextSize(24);
+            etKorrektur.setTextSize(24);
+            etBasal.setTextSize(24);
+
+            tvBlutzuckerHeader.setTextSize(14);
+            tvBeHeader.setTextSize(14);
+            tvBolusHeader.setTextSize(14);
+            tvKorrekturHeader.setTextSize(14);
+            tvBasalHeader.setTextSize(14);
+        }
+
+        if (radioButtonPressed.equals("Jah")) {
+
+            tvDatum.setTextSize(24);
+            tvUhrzeit.setTextSize(24);
+
+            tvDatumHeader.setTextSize(24);
+            tvUhrzeitHeader.setTextSize(24);
+
+            etBlutzucker.setTextSize(24);
+            etBe.setTextSize(24);
+            etBolus.setTextSize(24);
+            etKorrektur.setTextSize(24);
+            etBasal.setTextSize(24);
+
+            tvBlutzuckerHeader.setTextSize(20);
+            tvBeHeader.setTextSize(20);
+            tvBolusHeader.setTextSize(20);
+            tvKorrekturHeader.setTextSize(20);
+            tvBasalHeader.setTextSize(20);
+        }
+
+        tvDatum.setTypeface(myFont);
+        tvUhrzeit.setTypeface(myFont);
+
+        tvDatumHeader.setTypeface(myFontHeader);
+        tvUhrzeitHeader.setTypeface(myFontHeader);
+
+        tvDatumHeader.setTextSize(24);
+        tvUhrzeitHeader.setTextSize(24);
+
+        etBlutzucker.setTypeface(myFont);
+        etBe.setTypeface(myFont);
+        etBolus.setTypeface(myFont);
+        etKorrektur.setTypeface(myFont);
+        etBasal.setTypeface(myFont);
+
+        tvBlutzuckerHeader.setTypeface(myFontHeader);
+        tvBeHeader.setTypeface(myFontHeader);
+        tvBolusHeader.setTypeface(myFontHeader);
+        tvKorrekturHeader.setTypeface(myFontHeader);
+        tvBasalHeader.setTypeface(myFontHeader);
+
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
 
@@ -197,16 +423,13 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
 
             eintragDatumMillis = intent.getLongExtra(EXTRA_EINTRAG_DATUM_MILLIS, 0);
 
-           int eintragID=intent.getIntExtra(EXTRA_ID,0);
+            int eintragID = intent.getIntExtra(EXTRA_ID, 0);
 
             //TTS.speak("eintrag eintrag"+eintragID);
 
 
-
             //tvMeineSwipeID.setText(String.valueOf(currentTimeMillis));   //todo Name swipeID ändern
             //tvMeineSwipeID.setText("haha");   //todo Name swipeID ändern
-
-
 
 
         } else {
@@ -271,7 +494,6 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
         }
 
 
-
         datum = tvDatum.getText().toString();
         uhrzeit = tvUhrzeit.getText().toString();
         //currentTimeMillis= Long.parseLong(tvMeineSwipeID.getText().toString());
@@ -296,7 +518,7 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
             /*todo vielleicht sollte ich eine andere ID finden...*/
             firestore.collection("Users").document(String.valueOf(currentTimeMillis)).delete();
 
-            if (datumOderZeitVeraendertJaNein==1){
+            if (datumOderZeitVeraendertJaNein == 1) {
                 String datumUndUhrzeit = datum + "-" + uhrzeit + ":00";
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy-HH:mm:ss", Locale.GERMAN);
                 try {
@@ -346,7 +568,7 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
             data.putExtra(EXTRA_ID, id);
         }
 
-        Intent intent=new Intent(getApplicationContext(),EintragInFirestore.class);
+        Intent intent = new Intent(getApplicationContext(), EintragInFirestore.class);
         intent.putExtra("Blutzucker", blutzucker);
         intent.putExtra("Broteinheiten", be);
         intent.putExtra("Bolus", bolus);
@@ -384,7 +606,7 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
 
     private void DatumEingeben() {
         //TTS.speak("date picker");
-        datumOderZeitVeraendertJaNein=1;
+        datumOderZeitVeraendertJaNein = 1;
 
         DialogFragment datePicker = new DateFragment();
 
@@ -407,7 +629,7 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
 
 
     private void UhrzeitEingeben() {
-        datumOderZeitVeraendertJaNein=1;
+        datumOderZeitVeraendertJaNein = 1;
 
         DialogFragment timePicker = new TimeFragment();
         //TTS.speak("time picker");

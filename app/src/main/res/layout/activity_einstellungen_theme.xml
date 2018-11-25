@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="CheckRadioButton"
-            android:clickable="true"
+
 
             android:text="dunkel" />
 
@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="CheckRadioButton"
-            android:checked="true"
+
             android:text="grün"
             />
         <RadioButton
@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="CheckRadioButton"
-        android:checked="true"
+
         android:text="Army"
         />
         <RadioButton
@@ -50,8 +50,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="CheckRadioButton"
-            android:checked="true"
+
             android:text="Emmas Choice"
+            />
+        <RadioButton
+            android:id="@+id/radioButton5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="CheckRadioButton"
+
+            android:text="Jah"
             />
 
     </RadioGroup>

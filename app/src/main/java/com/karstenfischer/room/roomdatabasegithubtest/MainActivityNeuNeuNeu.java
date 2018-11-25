@@ -88,6 +88,10 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
             setTheme(R.style.EmmasChoice);
         }
         TTS.speak(radioButtonPressed);
+        if (radioButtonPressed.equals("Jah")) {
+            setTheme(R.style.Jah);
+        }
+        TTS.speak(radioButtonPressed);
 
         setContentView(R.layout.activity_main_neu_neu);
 
@@ -109,14 +113,15 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
         if (radioButtonPressed.equals("Army")) {
             collapsingToolbar.setBackgroundResource(R.drawable.backgroundarmy1);
             ivLogoBetty.setImageResource(R.drawable.logo001army);
-            //coordinatorLayout.setBackgroundResource(R.drawable.backgroundarmy);
-            //ivLogo.setImageResource(getResources().getDrawable().);
         }
         if (radioButtonPressed.equals("grün")) {
             collapsingToolbar.setBackgroundResource(R.drawable.collapsegreen);
-            //ivLogoBetty.setImageResource(R.drawable.logo001army);
-            //coordinatorLayout.setBackgroundResource(R.drawable.backgroundarmy);
-            //ivLogo.setImageResource(getResources().getDrawable().);
+        }
+        if (radioButtonPressed.equals("dunkel")) {
+            collapsingToolbar.setBackgroundResource(R.drawable.collapsedunkel);
+        }
+        if (radioButtonPressed.equals("Jah")) {
+            collapsingToolbar.setBackgroundResource(R.drawable.collapsejah);
         }
 
         fabTheme.setOnClickListener(new View.OnClickListener() {
@@ -195,10 +200,25 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
                 if (direction == ItemTouchHelper.LEFT) {    //if swipe left
                     final int position = viewHolder.getAdapterPosition(); //get position which is swipe
 
-                    final int blutzucker = Integer.parseInt(
+                  final   int blutzucker;
+
+
+                    String blutzuckerTest=
                             ((TextView) Objects.requireNonNull
                                     (recyclerView.findViewHolderForAdapterPosition(position))
-                                    .itemView.findViewById(R.id.tvBlutzucker)).getText().toString());
+                                    .itemView.findViewById(R.id.tvBlutzucker)).getText().toString();
+
+                    if(blutzuckerTest.equals(" -- ")){
+                          blutzucker =0;
+                    }else {
+                          blutzucker = Integer.parseInt(
+                                ((TextView) Objects.requireNonNull
+                                        (recyclerView.findViewHolderForAdapterPosition(position))
+                                        .itemView.findViewById(R.id.tvBlutzucker)).getText().toString());
+                    }
+
+
+
 
                     final float be = Float.parseFloat(
                             ((TextView) Objects.requireNonNull
