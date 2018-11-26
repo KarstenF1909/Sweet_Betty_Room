@@ -29,7 +29,7 @@
 
             <ImageView
                 android:id="@+id/ivLogoBetty"
-                android:layout_width="250dp"
+                android:layout_width="185dp"
                 android:layout_height="200dp"
                 android:layout_gravity="center_vertical|end"
                 android:layout_marginStart="8dp"
@@ -92,7 +92,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|start"
         android:layout_margin="8dp"
-        android:backgroundTint="@color/colorPrimary"/>
+        android:backgroundTint="@color/colorPrimary"
+        app:layout_anchor="@+id/app_bar_layout"
+        app:layout_anchorGravity="left|top" />
 
 
 </android.support.design.widget.CoordinatorLayout>

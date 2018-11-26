@@ -122,7 +122,10 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
         }
         if (radioButtonPressed.equals("Jah")) {
             collapsingToolbar.setBackgroundResource(R.drawable.collapsejah);
+        }if (radioButtonPressed.equals("spiderman")) {
+            collapsingToolbar.setBackgroundResource(R.drawable.collapsespiderman);
         }
+
 
         fabTheme.setOnClickListener(new View.OnClickListener() {
             @Override

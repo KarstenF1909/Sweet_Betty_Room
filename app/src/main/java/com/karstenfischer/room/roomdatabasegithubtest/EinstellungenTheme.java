@@ -68,6 +68,15 @@ private String radioButtonPressed;
         if(theme.equals("Army")){
             setTheme(R.style.Army);
         }
+        if(theme.equals("EmmasChoice")){
+            setTheme(R.style.EmmasChoice);
+        }
+        if(theme.equals("jah")){
+            setTheme(R.style.Jah);
+        }
+        if(theme.equals("spiderman")){
+            setTheme(R.style.spiderman);
+        }
     }
 
     public void CheckRadioButton(View view) {
