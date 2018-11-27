@@ -11,12 +11,12 @@ import android.widget.RadioGroup;
 
 public class EinstellungenTheme extends AppCompatActivity {
 
-RadioGroup radioGroup;
-RadioButton radioButton;
+    RadioGroup radioGroup;
+    RadioButton radioButton;
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-private String radioButtonPressed;
+    private String radioButtonPressed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,88 +29,97 @@ private String radioButtonPressed;
         WelchesTheme();
 
 
-        sharedPreferences=getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        editor=sharedPreferences.edit();
+        sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
         //assert theme != null;
-        radioButtonPressed=sharedPreferences.getString("radioButtonPressed","duestertheme");
+        radioButtonPressed = sharedPreferences.getString("radioButtonPressed", "duestertheme");
 
 
-        if(radioButtonPressed.equals("grün")){
+        if (radioButtonPressed.equals("grün")) {
             setTheme(R.style.greentheme);
         }
-        if(radioButtonPressed.equals("dunkel")){
+        if (radioButtonPressed.equals("dunkel")) {
             setTheme(R.style.duestertheme);
         }
 
         setContentView(R.layout.activity_einstellungen_theme);
         //setTheme(R.style.bluetheme);
-        radioGroup=findViewById(R.id.radioGroup);
+        radioGroup = findViewById(R.id.radioGroup);
 
     }
 
 
     private void WelchesTheme() {
 
-        SharedPreferences sharedPreferences=getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor=sharedPreferences.edit();
-        editor.putString("einstellungTheme","greentheme");
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        editor.putString("einstellungTheme", "greentheme");
         editor.apply();
 
-        String theme=sharedPreferences.getString("einstellungTheme","duesterTheme");
+        String theme = sharedPreferences.getString("einstellungTheme", "duesterTheme");
 
         //assert theme != null;
-        if(theme.equals("grün")){
+        if (theme.equals("grün")) {
             setTheme(R.style.greentheme);
         }
-        if(theme.equals("dunkel")){
+        if (theme.equals("dunkel")) {
             setTheme(R.style.duestertheme);
         }
-        if(theme.equals("Army")){
+        if (theme.equals("Army")) {
             setTheme(R.style.Army);
         }
-        if(theme.equals("EmmasChoice")){
+        if (theme.equals("EmmasChoice")) {
             setTheme(R.style.EmmasChoice);
         }
-        if(theme.equals("jah")){
+        if (theme.equals("jah")) {
             setTheme(R.style.Jah);
         }
-        if(theme.equals("spiderman")){
+        if (theme.equals("spiderman")) {
             setTheme(R.style.spiderman);
+        }
+        if (theme.equals("pinklady")) {
+            setTheme(R.style.pinklady);
         }
     }
 
     public void CheckRadioButton(View view) {
-        int radioId=radioGroup.getCheckedRadioButtonId();
-        radioButton=findViewById(radioId);
-        radioButtonPressed=radioButton.getText().toString().trim();
+        int radioId = radioGroup.getCheckedRadioButtonId();
+        radioButton = findViewById(radioId);
+        radioButtonPressed = radioButton.getText().toString().trim();
 
-        if(radioButtonPressed.equals("Emmas Choice")) {
+        if (radioButtonPressed.equals("Emmas Choice")) {
             radioButtonPressed = "EmmasChoice";
-            editor.putString("radioButtonPressed",radioButtonPressed);
+            editor.putString("radioButtonPressed", radioButtonPressed);
             editor.apply();
         }
 
 
-        editor.putString("radioButtonPressed",radioButtonPressed);
+        editor.putString("radioButtonPressed", radioButtonPressed);
         editor.apply();
 
-        TTS.speak("radio button"+radioButtonPressed);
+        TTS.speak("radio button" + radioButtonPressed);
 
-        if(radioButtonPressed.equals("grün")){
+        if (radioButtonPressed.equals("grün")) {
             setTheme(R.style.greentheme);
         }
-        if(radioButtonPressed.equals("dunkel")){
+        if (radioButtonPressed.equals("dunkel")) {
             setTheme(R.style.duestertheme);
         }
-        if(radioButtonPressed.equals("Army")){
+        if (radioButtonPressed.equals("Army")) {
             setTheme(R.style.Army);
         }
-        if(radioButtonPressed.equals("EmmasChoice")){
+        if (radioButtonPressed.equals("EmmasChoice")) {
             setTheme(R.style.EmmasChoice);
         }
-        Intent intent=new Intent(getApplicationContext(),MainActivityNeuNeuNeu.class);
+        if (radioButtonPressed.equals("spiderman")) {
+            setTheme(R.style.spiderman);
+        }
+        if (radioButtonPressed.equals("pinklady")) {
+            setTheme(R.style.pinklady);
+        }
+        Intent intent = new Intent(getApplicationContext(), MainActivityNeuNeuNeu.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-     startActivity(intent);
+        startActivity(intent);
         finish();
     }
 }

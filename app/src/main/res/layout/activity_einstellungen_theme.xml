@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".EinstellungenTheme">
 
-
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
@@ -24,52 +23,57 @@
             android:id="@+id/radioButton1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:onClick="CheckRadioButton"
-
-
             android:text="dunkel" />
 
         <RadioButton
             android:id="@+id/radioButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:onClick="CheckRadioButton"
+            android:text="grün" />
 
-            android:text="grün"
-            />
         <RadioButton
-        android:id="@+id/radioButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="CheckRadioButton"
+            android:id="@+id/radioButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:onClick="CheckRadioButton"
+            android:text="Army" />
 
-        android:text="Army"
-        />
         <RadioButton
             android:id="@+id/radioButton4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:onClick="CheckRadioButton"
+            android:text="Emmas Choice" />
 
-            android:text="Emmas Choice"
-            />
         <RadioButton
             android:id="@+id/radioButton5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:onClick="CheckRadioButton"
+            android:text="Jah" />
 
-            android:text="Jah"
-            />
         <RadioButton
             android:id="@+id/radioButton6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:onClick="CheckRadioButton"
+            android:text="spiderman" />
 
-            android:text="spiderman"
-            />
+        <RadioButton
+            android:id="@+id/radioButton7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:onClick="CheckRadioButton"
+            android:text="pinklady" />
 
     </RadioGroup>
-
 </android.support.constraint.ConstraintLayout>

@@ -1,9 +1,7 @@
 package com.karstenfischer.room.roomdatabasegithubtest;
 
 class PreferenceChosen {
-
     private static String chosenPref;
-
     static String getChosenPref() {
         return chosenPref;
     }

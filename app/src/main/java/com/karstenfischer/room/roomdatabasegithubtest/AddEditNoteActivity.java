@@ -186,48 +186,31 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
         npPriority.setMaxValue(10);
 
 
+        //if (radioButtonPressed.equals("dunkel")) {
+        //    myFont = Typeface.createFromAsset(this.getAssets(), "font/IndieFlower.ttf");
+        //    myFontHeader = Typeface.createFromAsset(this.getAssets(), "font/Gruppo-Regular.ttf");
+        //}
+        //if (radioButtonPressed.equals("grün")) {
+        //    myFont = Typeface.createFromAsset(this.getAssets(), "font/Monoton-Regular.ttf");
+        //    myFontHeader = Typeface.createFromAsset(this.getAssets(), "font/Gruppo-Regular.ttf");
+        //}
+        //if (radioButtonPressed.equals("Army")) {
+        //    myFont = Typeface.createFromAsset(this.getAssets(), "font/AllertaStencil-Regular.ttf");
+        //    myFontHeader = Typeface.createFromAsset(this.getAssets(), "font/AllertaStencil-Regular.ttf");
+        //}
+        //if (radioButtonPressed.equals("EmmasChoice")) {
+        //    myFont = Typeface.createFromAsset(this.getAssets(), "font/IndieFlower.ttf");
+        //    myFontHeader = Typeface.createFromAsset(this.getAssets(), "font/IndieFlower.ttf");
+        //}
+        //if (radioButtonPressed.equals("Jah")) {
+        //    myFont = Typeface.createFromAsset(this.getAssets(), "font/FrederickatheGreat-Regular.ttf");
+        //    myFontHeader = Typeface.createFromAsset(this.getAssets(), "font/IndieFlower.ttf");
+        //}
+
         if (radioButtonPressed.equals("dunkel")) {
 
             myFont = Typeface.createFromAsset(this.getAssets(), "font/IndieFlower.ttf");
             myFontHeader = Typeface.createFromAsset(this.getAssets(), "font/Gruppo-Regular.ttf");
-
-
-        }
-        if (radioButtonPressed.equals("grün")) {
-
-            myFont = Typeface.createFromAsset(this.getAssets(), "font/Monoton-Regular.ttf");
-            myFontHeader = Typeface.createFromAsset(this.getAssets(), "font/Gruppo-Regular.ttf");
-
-
-
-        }
-        if (radioButtonPressed.equals("Army")) {
-
-            myFont = Typeface.createFromAsset(this.getAssets(), "font/AllertaStencil-Regular.ttf");
-            myFontHeader = Typeface.createFromAsset(this.getAssets(), "font/AllertaStencil-Regular.ttf");
-
-
-
-        }
-        if (radioButtonPressed.equals("EmmasChoice")) {
-
-            myFont = Typeface.createFromAsset(this.getAssets(), "font/IndieFlower.ttf");
-            myFontHeader = Typeface.createFromAsset(this.getAssets(), "font/IndieFlower.ttf");
-
-
-        }
-        if (radioButtonPressed.equals("Jah")) {
-
-            myFont = Typeface.createFromAsset(this.getAssets(), "font/FrederickatheGreat-Regular.ttf");
-            myFontHeader = Typeface.createFromAsset(this.getAssets(), "font/IndieFlower.ttf");
-
-
-        }
-
-
-
-
-        if (radioButtonPressed.equals("dunkel")) {
 
             tvDatum.setTextSize(24);
             tvUhrzeit.setTextSize(24);
@@ -248,14 +231,10 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
             tvBasalHeader.setTextSize(22);
         }
 
-
-
-
-
-
-
-
         if (radioButtonPressed.equals("grün")) {
+
+            myFont = Typeface.createFromAsset(this.getAssets(), "font/Monoton-Regular.ttf");
+            myFontHeader = Typeface.createFromAsset(this.getAssets(), "font/Gruppo-Regular.ttf");
 
             tvDatum.setTextSize(22);
             tvUhrzeit.setTextSize(22);
@@ -277,6 +256,9 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
         }
         if (radioButtonPressed.equals("Army")) {
 
+            myFont = Typeface.createFromAsset(this.getAssets(), "font/AllertaStencil-Regular.ttf");
+            myFontHeader = Typeface.createFromAsset(this.getAssets(), "font/AllertaStencil-Regular.ttf");
+
             tvDatum.setTextSize(24);
             tvUhrzeit.setTextSize(24);
 
@@ -298,6 +280,9 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
 
         if (radioButtonPressed.equals("EmmasChoice")) {
 
+            myFont = Typeface.createFromAsset(this.getAssets(), "font/IndieFlower.ttf");
+            myFontHeader = Typeface.createFromAsset(this.getAssets(), "font/IndieFlower.ttf");
+
             tvDatum.setTextSize(24);
             tvUhrzeit.setTextSize(24);
 
@@ -318,6 +303,33 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
         }
 
         if (radioButtonPressed.equals("Jah")) {
+
+            myFont = Typeface.createFromAsset(this.getAssets(), "font/FrederickatheGreat-Regular.ttf");
+            myFontHeader = Typeface.createFromAsset(this.getAssets(), "font/IndieFlower.ttf");
+
+            tvDatum.setTextSize(24);
+            tvUhrzeit.setTextSize(24);
+
+            tvDatumHeader.setTextSize(24);
+            tvUhrzeitHeader.setTextSize(24);
+
+            etBlutzucker.setTextSize(24);
+            etBe.setTextSize(24);
+            etBolus.setTextSize(24);
+            etKorrektur.setTextSize(24);
+            etBasal.setTextSize(24);
+
+            tvBlutzuckerHeader.setTextSize(20);
+            tvBeHeader.setTextSize(20);
+            tvBolusHeader.setTextSize(20);
+            tvKorrekturHeader.setTextSize(20);
+            tvBasalHeader.setTextSize(20);
+        }
+
+        if (radioButtonPressed.equals("spiderman")) {
+
+            myFont = Typeface.createFromAsset(this.getAssets(), "font/Sacred Hertz.otf");
+            myFontHeader = Typeface.createFromAsset(this.getAssets(), "font/Sacred Hertz.otf");
 
             tvDatum.setTextSize(24);
             tvUhrzeit.setTextSize(24);
@@ -359,9 +371,7 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
         tvKorrekturHeader.setTypeface(myFontHeader);
         tvBasalHeader.setTypeface(myFontHeader);
 
-
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
-
 
         fabDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -369,7 +379,6 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
                 DatumEingeben();
             }
         });
-
         fabTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -378,22 +387,15 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
             }
         });
 
-        //datum = simpleDateFormatDatum.format(new Date());
-        //uhrzeit = simpleDateFormatUhrzeit.format(new Date());
-
-
         Intent intent = getIntent();
-
 
         if (intent.hasExtra(EXTRA_ID)) {
             automatischOderManuell = "manuell";
             setTitle("Eintrag ändern");
 
-
             etTitle.setText(intent.getStringExtra(EXTRA_TITLE));
             etDescription.setText(intent.getStringExtra(EXTRA_DESCRIPTION));
             npPriority.setValue(intent.getIntExtra(EXTRA_PRIORITY, 1));
-
 
             blutzuckerHint = intent.getIntExtra(EXTRA_BLUTZUCKER, 0);
             beHint = intent.getFloatExtra(EXTRA_BE, 0);
@@ -407,46 +409,32 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
             etKorrektur.setHint(String.valueOf(korrekturHint));
             etBasal.setHint(String.valueOf(basalHint));
 
-
             etBlutzucker.setHintTextColor(getResources().getColor(R.color.schriftGrauHell));
             etBe.setHintTextColor(getResources().getColor(R.color.schriftGrauHell));
             etBolus.setHintTextColor(getResources().getColor(R.color.schriftGrauHell));
             etKorrektur.setHintTextColor(getResources().getColor(R.color.schriftGrauHell));
             etBasal.setHintTextColor(getResources().getColor(R.color.schriftGrauHell));
 
-
             tvDatum.setText(intent.getStringExtra(EXTRA_DATUM));
             tvUhrzeit.setText(intent.getStringExtra(EXTRA_UHRZEIT));
 
             currentTimeMillis = intent.getLongExtra(EXTRA_CURRENT_TIME_MILLIS, 0);
             //TTS.speak("current Time Millis"+currentTimeMillis);
-
             eintragDatumMillis = intent.getLongExtra(EXTRA_EINTRAG_DATUM_MILLIS, 0);
-
-            int eintragID = intent.getIntExtra(EXTRA_ID, 0);
-
             //TTS.speak("eintrag eintrag"+eintragID);
-
-
-            //tvMeineSwipeID.setText(String.valueOf(currentTimeMillis));   //todo Name swipeID ändern
-            //tvMeineSwipeID.setText("haha");   //todo Name swipeID ändern
-
 
         } else {
             //Neuer Eintrag
             automatischOderManuell = "automatisch";
             //TTS.speak("intent automatisch");
             setTitle("Neuer Eintrag");
-
             datum = simpleDateFormatDatum.format(new Date());
             uhrzeit = simpleDateFormatUhrzeit.format(new Date());
-
             tvDatum.setText(datum);
             tvUhrzeit.setText(uhrzeit);
         }
         //ENDE Neuer Eintrag
     }
-
 
     //Eintrag ist fertig und wird gespeichert
     private void saveNote() {
@@ -461,14 +449,12 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
             blutzucker = Integer.parseInt(etBlutzucker.getText().toString());
         }
 
-
         float be;
         if (etBe.getText().toString().isEmpty()) {
             be = beHint;
         } else {
             be = Float.parseFloat(etBe.getText().toString());
         }
-
 
         float bolus;
         if (etBolus.getText().toString().isEmpty()) {
@@ -477,14 +463,12 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
             bolus = Float.parseFloat(etBolus.getText().toString());
         }
 
-
         float korrektur;
         if (etKorrektur.getText().toString().isEmpty()) {
             korrektur = korrekturHint;
         } else {
             korrektur = Float.parseFloat(etKorrektur.getText().toString());
         }
-
 
         float basal;
         if (etBasal.getText().toString().isEmpty()) {
@@ -493,11 +477,8 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
             basal = Float.parseFloat(etBasal.getText().toString());
         }
 
-
         datum = tvDatum.getText().toString();
         uhrzeit = tvUhrzeit.getText().toString();
-        //currentTimeMillis= Long.parseLong(tvMeineSwipeID.getText().toString());
-
 
         Intent data = new Intent();
 
@@ -508,12 +489,10 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
             uhrzeit = simpleDateFormatUhrzeit.format(new Date());
             currentTimeMillis = System.currentTimeMillis();
         }
-
         //Manuell
         else {
             datum = tvDatum.getText().toString();
             uhrzeit = tvUhrzeit.getText().toString();
-
 
             /*todo vielleicht sollte ich eine andere ID finden...*/
             firestore.collection("Users").document(String.valueOf(currentTimeMillis)).delete();
@@ -529,18 +508,7 @@ public class AddEditNoteActivity extends AppCompatActivity implements DatePicker
                 }
             }
 
-            //currentTimeMillis= Long.parseLong(tvMeineSwipeID.getText().toString());
-
-
-            //SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy-HH:mm:ss", Locale.GERMAN);
-            //try {
-            //    Date startDate = simpleDateFormat.parse(datumUndUhrzeit);
-            //    currentTimeMillis = startDate != null ? startDate.getTime() : 0;
-            //} catch (ParseException e) {
-            //    e.printStackTrace();
-            //}
         }
-
         Date startDate;
         try {
             startDate = simpleDateFormatDatum.parse(datum);

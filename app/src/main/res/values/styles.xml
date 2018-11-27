@@ -179,17 +179,32 @@
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
     </style>
 
-
     <style name="spiderman" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#212121</item>
         <item name="colorPrimaryDark">#000000</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="backgroundcolor">#ffee00</item>
-        <item name="cardbackground1">#787878</item>
-        <item name="cardbackground2">#00cf00</item>
-        <item name="textcolor2">#060079</item>
-        <item name="textcolor1">#646464</item>
+        <item name="backgroundcolor">#310000</item>
+        <item name="cardbackground1">#232323</item>
+        <item name="cardbackground2">#212121</item>
+        <item name="textcolor2">#5b52ff</item>
+        <item name="textcolor1">#bcbcbc</item>
+        <item name="textcolor3">#b02b2b</item>
+        <item name="tintcolor">#ffffff</item>
+        <item name="buttoncolor">#c964fc</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+    </style>
+
+    <style name="pinklady" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#b982b9</item>
+        <item name="colorPrimaryDark">#a753a7</item>
+        <item name="colorAccent">#b757bf</item>
+        <item name="backgroundcolor">#f47aff</item>
+        <item name="cardbackground1">#f4bcff</item>
+        <item name="cardbackground2">#f2bbfd</item>
+        <item name="textcolor2">#f1a62d</item>
+        <item name="textcolor1">#a16400</item>
         <item name="textcolor3">#b02b2b</item>
         <item name="tintcolor">#ffffff</item>
         <item name="buttoncolor">#c964fc</item>

@@ -23,8 +23,7 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
     private Typeface myFont;
     private Typeface myFontHeader;
     private String theme = "";
-    //SharedPreferences sharedPreferences;
-    Context context;
+
 
     NoteAdapter() {
         super(DIFF_CALLBACK);
@@ -89,7 +88,7 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
 
         private ImageView ivEmoji;
 
-        private CoordinatorLayout coordinatorLayout;
+
 
         NoteHolder(@NonNull View itemView) {
             super(itemView);
@@ -118,11 +117,7 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
             tvBasalHeader1 = itemView.findViewById(R.id.tvBasalHeader1);
             tvCurrentTimeMillis = itemView.findViewById(R.id.tvCurrentTimeMillis);
             tvEintragDatumMillis = itemView.findViewById(R.id.tvEintragDatumMillis);
-
-            coordinatorLayout = itemView.findViewById(R.id.coordinatorLayout);
             ivEmoji = itemView.findViewById(R.id.ivEmoji);
-
-
             viewBackground = itemView.findViewById(R.id.view_background);
             viewForeground = itemView.findViewById(R.id.view_foreground);
 
@@ -144,14 +139,11 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
         View itemView = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.note_item_neu_neu_neu, viewGroup, false);
 
-
         //Zu geil!
         theme = PreferenceChosen.getChosenPref();
 
-
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(viewGroup.getContext());
-        //SharedPreferences sharedPreferences =viewGroup.getContext().getSharedPreferences("myPrefs",Context.MODE_PRIVATE);
-        //theme=sharedPreferences.getString("radioButtonPressed","blöde");
+
         if (theme.equals("dunkel")) {
             myFont = Typeface.createFromAsset(viewGroup.getContext().getAssets(), "font/IndieFlower.ttf");
             myFontHeader = Typeface.createFromAsset(viewGroup.getContext().getAssets(), "font/Gruppo-Regular.ttf");
@@ -174,11 +166,14 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
         if (theme.equals("Jah")) {
             myFont = Typeface.createFromAsset(viewGroup.getContext().getAssets(), "font/FrederickatheGreat-Regular.ttf");
             myFontHeader = Typeface.createFromAsset(viewGroup.getContext().getAssets(), "font/IndieFlower.ttf");
-
         }
         if (theme.equals("spiderman")) {
-            myFont = Typeface.createFromAsset(viewGroup.getContext().getAssets(), "font/Sacred Hertz.otf");
-            myFontHeader = Typeface.createFromAsset(viewGroup.getContext().getAssets(), "font/Sacred Hertz.otf");
+            myFont = Typeface.createFromAsset(viewGroup.getContext().getAssets(), "font/EXTRAARA.ttf");
+            myFontHeader = Typeface.createFromAsset(viewGroup.getContext().getAssets(), "font/EXTRASOM.ttf");
+        }
+        if (theme.equals("pinklady")) {
+            myFont = Typeface.createFromAsset(viewGroup.getContext().getAssets(), "font/GreatVibes-Regular.ttf");
+            myFontHeader = Typeface.createFromAsset(viewGroup.getContext().getAssets(), "font/GreatVibes-Regular.ttf");
         }
 
         return new NoteHolder(itemView);
@@ -219,31 +214,20 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
             noteHolder.tvBolus.setTextSize(24);
             noteHolder.tvKorrektur.setTextSize(24);
             noteHolder.tvBasal.setTextSize(24);
-
             noteHolder.tvDatum.setTextSize(20);
             noteHolder.tvUhrzeit.setTextSize(30);
             noteHolder.tvUhr.setTextSize(12);
             noteHolder.tvTitle.setTextSize(24);
             noteHolder.tvDescription.setTextSize(12);
-
-
             noteHolder.tvBlutzuckerHeader.setTextSize(12);
-
-
-
             noteHolder.tvBeHeader.setTextSize(12);
             noteHolder.tvBeHeader1.setTextSize(12);
-
             noteHolder.tvBolusHeader.setTextSize(12);
             noteHolder.tvBolusHeader1.setTextSize(12);
-
             noteHolder.tvKorrekturHeader.setTextSize(12);
             noteHolder.tvKorrekturHeader1.setTextSize(12);
-
             noteHolder.tvBasalHeader.setTextSize(12);
             noteHolder.tvBasalHeader1.setTextSize(12);
-
-
             noteHolder.tvDatumHeader.setTextSize(12);
             noteHolder.tvUhrzeitHeader.setTextSize(12);
         }
@@ -253,29 +237,20 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
             noteHolder.tvBolus.setTextSize(24);
             noteHolder.tvKorrektur.setTextSize(24);
             noteHolder.tvBasal.setTextSize(24);
-
             noteHolder.tvDatum.setTextSize(25);
             noteHolder.tvUhrzeit.setTextSize(30);
             noteHolder.tvUhr.setTextSize(14);
             noteHolder.tvTitle.setTextSize(24);
             noteHolder.tvDescription.setTextSize(12);
-
             noteHolder.tvBlutzuckerHeader.setTextSize(14);
-
-
             noteHolder.tvBeHeader.setTextSize(14);
             noteHolder.tvBeHeader1.setTextSize(14);
-
             noteHolder.tvBolusHeader.setTextSize(14);
             noteHolder.tvBolusHeader1.setTextSize(14);
-
             noteHolder.tvKorrekturHeader.setTextSize(14);
             noteHolder.tvKorrekturHeader1.setTextSize(14);
-
             noteHolder.tvBasalHeader.setTextSize(14);
             noteHolder.tvBasalHeader1.setTextSize(14);
-
-
             noteHolder.tvDatumHeader.setTextSize(14);
             noteHolder.tvUhrzeitHeader.setTextSize(14);
         }
@@ -286,29 +261,20 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
             noteHolder.tvBolus.setTextSize(24);
             noteHolder.tvKorrektur.setTextSize(24);
             noteHolder.tvBasal.setTextSize(24);
-
             noteHolder.tvDatum.setTextSize(25);
             noteHolder.tvUhrzeit.setTextSize(30);
             noteHolder.tvUhr.setTextSize(14);
             noteHolder.tvTitle.setTextSize(24);
             noteHolder.tvDescription.setTextSize(12);
-
             noteHolder.tvBlutzuckerHeader.setTextSize(14);
-
-
             noteHolder.tvBeHeader.setTextSize(14);
             noteHolder.tvBeHeader1.setTextSize(14);
-
             noteHolder.tvBolusHeader.setTextSize(14);
             noteHolder.tvBolusHeader1.setTextSize(14);
-
             noteHolder.tvKorrekturHeader.setTextSize(14);
             noteHolder.tvKorrekturHeader1.setTextSize(14);
-
             noteHolder.tvBasalHeader.setTextSize(14);
             noteHolder.tvBasalHeader1.setTextSize(14);
-
-
             noteHolder.tvDatumHeader.setTextSize(14);
             noteHolder.tvUhrzeitHeader.setTextSize(14);
         }
@@ -319,63 +285,69 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
             noteHolder.tvBolus.setTextSize(24);
             noteHolder.tvKorrektur.setTextSize(24);
             noteHolder.tvBasal.setTextSize(24);
-
             noteHolder.tvDatum.setTextSize(25);
             noteHolder.tvUhrzeit.setTextSize(30);
             noteHolder.tvUhr.setTextSize(14);
             noteHolder.tvTitle.setTextSize(24);
             noteHolder.tvDescription.setTextSize(12);
-
             noteHolder.tvBlutzuckerHeader.setTextSize(14);
-
-
-
             noteHolder.tvBeHeader.setTextSize(14);
             noteHolder.tvBeHeader1.setTextSize(14);
-
             noteHolder.tvBolusHeader.setTextSize(14);
             noteHolder.tvBolusHeader1.setTextSize(14);
-
             noteHolder.tvKorrekturHeader.setTextSize(14);
             noteHolder.tvKorrekturHeader1.setTextSize(14);
-
             noteHolder.tvBasalHeader.setTextSize(14);
             noteHolder.tvBasalHeader1.setTextSize(14);
-
             noteHolder.tvDatumHeader.setTextSize(14);
             noteHolder.tvUhrzeitHeader.setTextSize(14);
             noteHolder.tvUhr.setTextSize(14);
         }
 
         if (theme.equals("spiderman")) {
-            noteHolder.tvBlutzucker.setTextSize(85);
+            noteHolder.tvBlutzucker.setTextSize(55);
             noteHolder.tvBe.setTextSize(24);
             noteHolder.tvBolus.setTextSize(24);
             noteHolder.tvKorrektur.setTextSize(24);
             noteHolder.tvBasal.setTextSize(24);
-
             noteHolder.tvDatum.setTextSize(25);
             noteHolder.tvUhrzeit.setTextSize(30);
             noteHolder.tvUhr.setTextSize(14);
             noteHolder.tvTitle.setTextSize(24);
             noteHolder.tvDescription.setTextSize(12);
-
             noteHolder.tvBlutzuckerHeader.setTextSize(14);
+            noteHolder.tvBeHeader.setTextSize(8);
+            noteHolder.tvBeHeader1.setTextSize(8);
+            noteHolder.tvBolusHeader.setTextSize(8);
+            noteHolder.tvBolusHeader1.setTextSize(8);
+            noteHolder.tvKorrekturHeader.setTextSize(8);
+            noteHolder.tvKorrekturHeader1.setTextSize(8);
+            noteHolder.tvBasalHeader.setTextSize(8);
+            noteHolder.tvBasalHeader1.setTextSize(8);
+            noteHolder.tvDatumHeader.setTextSize(8);
+            noteHolder.tvUhrzeitHeader.setTextSize(8);
+        }
 
-
-
+        if (theme.equals("pinklady")) {
+            noteHolder.tvBlutzucker.setTextSize(85);
+            noteHolder.tvBe.setTextSize(24);
+            noteHolder.tvBolus.setTextSize(24);
+            noteHolder.tvKorrektur.setTextSize(24);
+            noteHolder.tvBasal.setTextSize(24);
+            noteHolder.tvDatum.setTextSize(25);
+            noteHolder.tvUhrzeit.setTextSize(30);
+            noteHolder.tvUhr.setTextSize(14);
+            noteHolder.tvTitle.setTextSize(24);
+            noteHolder.tvDescription.setTextSize(12);
+            noteHolder.tvBlutzuckerHeader.setTextSize(14);
             noteHolder.tvBeHeader.setTextSize(12);
             noteHolder.tvBeHeader1.setTextSize(12);
-
             noteHolder.tvBolusHeader.setTextSize(12);
             noteHolder.tvBolusHeader1.setTextSize(12);
-
             noteHolder.tvKorrekturHeader.setTextSize(12);
             noteHolder.tvKorrekturHeader1.setTextSize(12);
-
             noteHolder.tvBasalHeader.setTextSize(12);
             noteHolder.tvBasalHeader1.setTextSize(12);
-
             noteHolder.tvDatumHeader.setTextSize(12);
             noteHolder.tvUhrzeitHeader.setTextSize(12);
         }
@@ -390,26 +362,17 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
         noteHolder.tvUhr.setTypeface(myFont);
         noteHolder.tvTitle.setTypeface(myFont);
         noteHolder.tvDescription.setTypeface(myFont);
-
         noteHolder.tvBlutzuckerHeader.setTypeface(myFontHeader);
-
         noteHolder.tvBeHeader.setTypeface(myFontHeader);
         noteHolder.tvBeHeader1.setTypeface(myFontHeader);
-
         noteHolder.tvBolusHeader.setTypeface(myFontHeader);
         noteHolder.tvBolusHeader1.setTypeface(myFontHeader);
-
         noteHolder.tvKorrekturHeader.setTypeface(myFontHeader);
         noteHolder.tvKorrekturHeader1.setTypeface(myFontHeader);
-
         noteHolder.tvBasalHeader.setTypeface(myFontHeader);
         noteHolder.tvBasalHeader1.setTypeface(myFontHeader);
-
-
-
         noteHolder.tvDatumHeader.setTypeface(myFontHeader);
         noteHolder.tvUhrzeitHeader.setTypeface(myFontHeader);
-
 
         noteHolder.tvPriority.setVisibility(View.GONE);
         noteHolder.tvPriority.setText(String.valueOf(currentNote.getPriority()));
@@ -424,15 +387,12 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
             noteHolder.tvBlutzucker.setText(String.valueOf(currentNote.getBlutzucker()));
         }
 
-
         if (currentNote.getBe() == 0) {
             noteHolder.tvBe.setVisibility(View.INVISIBLE);
-
             noteHolder.tvBeHeader.setVisibility(View.VISIBLE);
             noteHolder.tvBeHeader1.setVisibility(View.INVISIBLE);
         } else {
             noteHolder.tvBe.setVisibility(View.VISIBLE);
-
             noteHolder.tvBeHeader.setVisibility(View.INVISIBLE);
             noteHolder.tvBeHeader1.setVisibility(View.VISIBLE);
 
@@ -441,14 +401,10 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
 
         if (currentNote.getBolus() == 0) {
             noteHolder.tvBolus.setVisibility(View.INVISIBLE);
-
-
             noteHolder.tvBolusHeader.setVisibility(View.VISIBLE);
             noteHolder.tvBolusHeader1.setVisibility(View.INVISIBLE);
         } else {
             noteHolder.tvBolus.setVisibility(View.VISIBLE);
-
-
             noteHolder.tvBolusHeader.setVisibility(View.INVISIBLE);
             noteHolder.tvBolusHeader1.setVisibility(View.VISIBLE);
 
@@ -457,12 +413,10 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
 
         if (currentNote.getKorrektur() == 0) {
             noteHolder.tvKorrektur.setVisibility(View.INVISIBLE);
-
             noteHolder.tvKorrekturHeader.setVisibility(View.VISIBLE);
             noteHolder.tvKorrekturHeader1.setVisibility(View.INVISIBLE);
         } else {
             noteHolder.tvKorrektur.setVisibility(View.VISIBLE);
-
             noteHolder.tvKorrekturHeader.setVisibility(View.INVISIBLE);
             noteHolder.tvKorrekturHeader1.setVisibility(View.VISIBLE);
         }
@@ -472,19 +426,14 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
 
         if (currentNote.getBasal() == 0) {
             noteHolder.tvBasal.setVisibility(View.INVISIBLE);
-
             noteHolder.tvBasalHeader.setVisibility(View.VISIBLE);
             noteHolder.tvBasalHeader1.setVisibility(View.INVISIBLE);
         } else {
             noteHolder.tvBasal.setVisibility(View.VISIBLE);
-
             noteHolder.tvBasalHeader.setVisibility(View.INVISIBLE);
             noteHolder.tvBasalHeader1.setVisibility(View.VISIBLE);
         }
         noteHolder.tvBasal.setText(String.valueOf(currentNote.getBasal()));
-
-
-
 
 
 
@@ -497,6 +446,17 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
             }
             if (currentNote.getBlutzucker() > 199) {
                 noteHolder.ivEmoji.setImageResource(R.drawable.wertrotspiderman);
+            }
+        }else
+        if(theme.equals("pinklady")){
+            if (currentNote.getBlutzucker() < 70) {
+                noteHolder.ivEmoji.setImageResource(R.drawable.wertblaupinklady);
+            }
+            if (currentNote.getBlutzucker() > 69 && currentNote.getBlutzucker() < 200) {
+                noteHolder.ivEmoji.setImageResource(R.drawable.wertgruenpinklady);
+            }
+            if (currentNote.getBlutzucker() > 199) {
+                noteHolder.ivEmoji.setImageResource(R.drawable.wertrotpinklady);
             }
         }else{
             if (currentNote.getBlutzucker() < 70) {
@@ -511,9 +471,6 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
         }
 
 
-
-
-
         noteHolder.tvDatum.setText(String.valueOf(currentNote.getDatum()));
         noteHolder.tvUhrzeit.setText(String.valueOf(currentNote.getUhrzeit()));
         noteHolder.tvCurrentTimeMillis.setText(String.valueOf(currentNote.getCurrentTimeMillis()));
@@ -521,7 +478,6 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
         noteHolder.tvCurrentTimeMillis.setText(String.valueOf(currentNote.getCurrentTimeMillis()));
         noteHolder.tvUhrzeitHeader.setText("Uhrzeit");
         noteHolder.tvDatumHeader.setText("Datum");
-
 
         if (String.valueOf(currentNote.getTitle()).isEmpty()) {
             noteHolder.tvTitle.setVisibility(View.GONE);
@@ -538,8 +494,6 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NoteHolder> {
 
         }
         noteHolder.tvDescription.setText(String.valueOf(currentNote.getDescription()));  //todo
-
-
     }
 
     //Für onSwipe

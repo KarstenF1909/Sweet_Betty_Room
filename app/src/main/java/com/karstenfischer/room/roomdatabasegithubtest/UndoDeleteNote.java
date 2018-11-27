@@ -11,7 +11,6 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,7 +43,6 @@ public class UndoDeleteNote extends AppCompatActivity {
     private String uhrzeit;
     private long currentTimeMillis;
     private long eintragDatumMillis;
-    private long eintragID;
 
     private FirebaseFirestore firestore;
 
@@ -53,72 +51,16 @@ public class UndoDeleteNote extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         firestore = FirebaseFirestore.getInstance();
-
         //Wichtig zum Reden!!!
         TTS.init(getApplicationContext());
 
         UndoDelete();
-
-
-
         finish();
-
-/*
-
-
-            etBlutzucker.setHint(String.valueOf(blutzuckerHint));
-            etBe.setHint(String.valueOf(beHint));
-            etBolus.setHint(String.valueOf(bolusHint));
-            etKorrektur.setHint(String.valueOf(korrekturHint));
-            etBasal.setHint(String.valueOf(basalHint));
-
-
-            etBlutzucker.setHintTextColor(getResources().getColor(R.color.schriftGrauHell));
-            etBe.setHintTextColor(getResources().getColor(R.color.schriftGrauHell));
-            etBolus.setHintTextColor(getResources().getColor(R.color.schriftGrauHell));
-            etKorrektur.setHintTextColor(getResources().getColor(R.color.schriftGrauHell));
-            etBasal.setHintTextColor(getResources().getColor(R.color.schriftGrauHell));
-
-
-            tvDatum.setText(intent.getStringExtra(EXTRA_DATUM));
-            tvUhrzeit.setText(intent.getStringExtra(EXTRA_UHRZEIT));
-
-            currentTimeMillis = intent.getLongExtra(EXTRA_CURRENT_TIME_MILLIS, 0);
-            TTS.speak("current Time Millis" + currentTimeMillis);
-
-            eintragDatumMillis = intent.getLongExtra(EXTRA_EINTRAG_DATUM_MILLIS, 0);
-
-            int eintragID = intent.getIntExtra(EXTRA_ID, 0);
-
-            TTS.speak("eintrag eintrag" + eintragID);
-
-
-            //tvMeineSwipeID.setText(String.valueOf(currentTimeMillis));   //todo Name swipeID ändern
-            //tvMeineSwipeID.setText("haha");   //todo Name swipeID ändern
-
-
-        } else {
-            //Neuer Eintrag
-            automatischOderManuell = "automatisch";
-            //TTS.speak("intent automatisch");
-            setTitle("Neuer Eintrag");
-
-            datum = simpleDateFormatDatum.format(new Date());
-            uhrzeit = simpleDateFormatUhrzeit.format(new Date());
-
-            tvDatum.setText(datum);
-            tvUhrzeit.setText(uhrzeit);
-        }
-        //ENDE Neuer Eintrag
-         */
     }
 
     private void UndoDelete() {
 
         Intent intent = getIntent();
-
-
-
 
         setTitle("Eintrag ändern");
 
@@ -132,21 +74,10 @@ public class UndoDeleteNote extends AppCompatActivity {
         korrektur = intent.getFloatExtra(EXTRA_KORREKTUR, 0);
         basal = intent.getFloatExtra(EXTRA_BASAL, 0);
 
-
-
         datum  = (intent.getStringExtra(EXTRA_DATUM));
         uhrzeit  = (intent.getStringExtra(EXTRA_UHRZEIT));
         currentTimeMillis = intent.getLongExtra(EXTRA_CURRENT_TIME_MILLIS, 0);
         eintragDatumMillis = intent.getLongExtra(EXTRA_EINTRAG_DATUM_MILLIS, 0);
-
-
-        //TTS.speak("c c"+blutzucker);
-        //TTS.speak(""+be);
-        //TTS.speak(""+bolus);
-        //TTS.speak(""+korrektur);
-        //TTS.speak(""+basal);
-        //TTS.speak(""+datum);
-        //TTS.speak(""+uhrzeit);
 
         TTS.speak("scheiß angeber");
 
@@ -178,10 +109,6 @@ public class UndoDeleteNote extends AppCompatActivity {
         });
         finish();
 
-
-
-
-
         Intent data = new Intent();
 
         data.putExtra(EXTRA_TITLE, title);
@@ -198,10 +125,5 @@ public class UndoDeleteNote extends AppCompatActivity {
         data.putExtra(EXTRA_EINTRAG_DATUM_MILLIS, eintragDatumMillis);
 
         setResult(RESULT_OK, data);
-
-
     }
-
 }
-
-

@@ -69,7 +69,6 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
 
 
-
         radioButtonPressed = sharedPreferences.getString("radioButtonPressed", "duesterTheme");
 
         //assert radioButtonPressed != null;
@@ -87,11 +86,16 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
         if (radioButtonPressed.equals("EmmasChoice")) {
             setTheme(R.style.EmmasChoice);
         }
-        TTS.speak(radioButtonPressed);
         if (radioButtonPressed.equals("Jah")) {
             setTheme(R.style.Jah);
         }
-        TTS.speak(radioButtonPressed);
+        if (radioButtonPressed.equals("spiderman")) {
+            setTheme(R.style.spiderman);
+        }
+        if (radioButtonPressed.equals("pinklady")) {
+            setTheme(R.style.pinklady);
+        }
+
 
         setContentView(R.layout.activity_main_neu_neu);
 
@@ -106,8 +110,8 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         coordinatorLayout = findViewById(R.id.coordinatorLayout);
         fabTheme = findViewById(R.id.fabTheme);
-        ivLogoBetty=findViewById(R.id.ivLogoBetty);
-        collapsingToolbar=findViewById(R.id.collapsingToolbar);
+        ivLogoBetty = findViewById(R.id.ivLogoBetty);
+        collapsingToolbar = findViewById(R.id.collapsingToolbar);
 
 
         if (radioButtonPressed.equals("Army")) {
@@ -122,8 +126,12 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
         }
         if (radioButtonPressed.equals("Jah")) {
             collapsingToolbar.setBackgroundResource(R.drawable.collapsejah);
-        }if (radioButtonPressed.equals("spiderman")) {
-            collapsingToolbar.setBackgroundResource(R.drawable.collapsespiderman);
+        }
+        if (radioButtonPressed.equals("spiderman")) {
+            collapsingToolbar.setBackgroundResource(R.drawable.collapsespiderman1);
+        }
+        if (radioButtonPressed.equals("pinklady")) {
+            collapsingToolbar.setBackgroundResource(R.drawable.collapsepinklady);
         }
 
 
@@ -171,22 +179,15 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
         });
 
 
-
-
-
         //todo*******************************************************************
 
         //PreferenceChosen preferenceChosen=(PreferenceChosen) getApplicationContext();
 
 
-
-
-        String chosenPref=radioButtonPressed;
+        String chosenPref = radioButtonPressed;
         PreferenceChosen preferenceChosen = new PreferenceChosen();
         PreferenceChosen.setChosenPref(chosenPref);
-        TTS.speak("preference Chosen"+chosenPref);
-
-
+        TTS.speak("preference Chosen" + chosenPref);
 
 
         ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
@@ -203,25 +204,21 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
                 if (direction == ItemTouchHelper.LEFT) {    //if swipe left
                     final int position = viewHolder.getAdapterPosition(); //get position which is swipe
 
-                  final   int blutzucker;
+                    final int blutzucker;
 
-
-                    String blutzuckerTest=
+                    String blutzuckerTest =
                             ((TextView) Objects.requireNonNull
                                     (recyclerView.findViewHolderForAdapterPosition(position))
                                     .itemView.findViewById(R.id.tvBlutzucker)).getText().toString();
 
-                    if(blutzuckerTest.equals(" -- ")){
-                          blutzucker =0;
-                    }else {
-                          blutzucker = Integer.parseInt(
+                    if (blutzuckerTest.equals(" -- ")) {
+                        blutzucker = 0;
+                    } else {
+                        blutzucker = Integer.parseInt(
                                 ((TextView) Objects.requireNonNull
                                         (recyclerView.findViewHolderForAdapterPosition(position))
                                         .itemView.findViewById(R.id.tvBlutzucker)).getText().toString());
                     }
-
-
-
 
                     final float be = Float.parseFloat(
                             ((TextView) Objects.requireNonNull
@@ -312,7 +309,6 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
 
                             startActivityForResult(intent, UNDO_DELETE_REQUEST);
 
-
                             adapter.notifyItemChanged(position);
                             noteViewModel.getAllNotes().observe(MainActivityNeuNeuNeu.this, new Observer<List<Note>>() {
                                 @Override
@@ -320,8 +316,6 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
                                     adapter.submitList(notes);
                                 }
                             });
-
-
                         }
                     });
                     snackbar.setActionTextColor(Color.YELLOW);
@@ -330,7 +324,6 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
                     //Eintrag aus Firestore löschen todo wieder aktivieren!
                     firestore.collection("Users").document(String.valueOf(currentTimeMillis)).delete();
                     //TTS.speak("li la löschen ");
-
 
                     noteViewModel.getAllNotes().observe(MainActivityNeuNeuNeu.this, new Observer<List<Note>>() {
                         @Override
@@ -371,12 +364,10 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
                 intent.putExtra(AddEditNoteActivity.EXTRA_CURRENT_TIME_MILLIS, note.getCurrentTimeMillis());
                 intent.putExtra(AddEditNoteActivity.EXTRA_EINTRAG_DATUM_MILLIS, note.getEintragDatumMillis());
 
-
                 startActivityForResult(intent, EDIT_NOTE_REQUEST);
             }
         });
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -395,7 +386,7 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
             String uhrzeit = data.getStringExtra(AddEditNoteActivity.EXTRA_UHRZEIT);
             long currentTimeMillis = data.getLongExtra(AddEditNoteActivity.EXTRA_CURRENT_TIME_MILLIS, 0);
             long eintragDatumMillis = data.getLongExtra(AddEditNoteActivity.EXTRA_EINTRAG_DATUM_MILLIS, 0);
-            int eintragID = data.getIntExtra(AddEditNoteActivity.EXTRA_ID, 0);
+
 
             note = new Note(title, description, priority, blutzucker, be, bolus, korrektur, basal, datum, uhrzeit, currentTimeMillis, eintragDatumMillis);
             noteViewModel.insert(note);
@@ -421,8 +412,6 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
             long currentTimeMillis = data.getLongExtra(AddEditNoteActivity.EXTRA_CURRENT_TIME_MILLIS, 0);
             long eintragDatumMillis = data.getLongExtra(AddEditNoteActivity.EXTRA_EINTRAG_DATUM_MILLIS, 0);
 
-            int eintragID = data.getIntExtra(AddEditNoteActivity.EXTRA_ID, 0);
-
             Note note = new Note(title, description, priority, blutzucker, be, bolus, korrektur, basal, datum, uhrzeit, currentTimeMillis, eintragDatumMillis);
             note.setId(id);
             noteViewModel.update(note);
@@ -439,7 +428,6 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
         return true;
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -451,10 +439,4 @@ public class MainActivityNeuNeuNeu extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
-    private void WelchesTheme() {
-
-
-    }
-
 }
