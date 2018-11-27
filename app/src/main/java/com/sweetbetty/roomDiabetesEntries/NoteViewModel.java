@@ -1,4 +1,4 @@
-package com.karstenfischer.room.roomdatabasegithubtest;
+package com.sweetbetty.roomDiabetesEntries;
 
 //ViewModel
 

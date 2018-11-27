@@ -1,11 +1,8 @@
-package com.karstenfischer.room.roomdatabasegithubtest;
+package com.sweetbetty.roomDiabetesEntries;
 
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 
 import java.util.List;
 

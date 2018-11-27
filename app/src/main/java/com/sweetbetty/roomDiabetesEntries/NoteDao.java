@@ -1,4 +1,4 @@
-package com.karstenfischer.room.roomdatabasegithubtest;
+package com.sweetbetty.roomDiabetesEntries;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;

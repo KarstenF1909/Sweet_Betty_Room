@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.karstenfischer.room.roomdatabasegithubtest">
+    package="com.sweetbetty.roomDiabetesEntries">
 
     <application
         android:allowBackup="true"
@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivityNeuNeuNeu"
+            android:name="com.sweetbetty.roomDiabetesEntries.MainActivityNeuNeuNeu"
             android:configChanges="orientation"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
@@ -21,15 +21,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EintragInFirestore" />
-        <activity android:name=".UndoDeleteNote" />
+        <activity android:name="com.sweetbetty.roomDiabetesEntries.EintragInFirestore" />
+        <activity android:name="com.sweetbetty.roomDiabetesEntries.UndoDeleteNote" />
         <activity
-            android:name=".AddEditNoteActivity"
+            android:name="com.sweetbetty.roomDiabetesEntries.AddEditNoteActivity"
             android:configChanges="orientation"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="com.sweetbetty.roomDiabetesEntries.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/duesterAddEdittheme" />
-        <activity android:name=".EinstellungenTheme"></activity>
+        <activity android:name="com.sweetbetty.roomDiabetesEntries.EinstellungenTheme"></activity>
 
 
 

@@ -92,10 +92,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|start"
         android:layout_margin="8dp"
-        app:fabSize="mini"
         android:backgroundTint="@color/colorPrimary"
-        app:layout_anchor="@+id/recyclerView"
-        app:layout_anchorGravity="left|center" />
+        app:fabSize="mini"
+        />
 
 
 </android.support.design.widget.CoordinatorLayout>
